@@ -2,3 +2,37 @@ Category api call: http://jservice.io/api/category?id=117
 Total 18418 categories! http://jservice.io/api/category?id=18418
 
 1. CRA
+
+Core Requirements
+
+As a user, When the page loads a landing page asking if I want to play 
+
+As a user, When Click play a game board appears
+
+As a user, When I look at the game board I see 6 columns each with
+
+* A category
+
+* 5 questions with increasing point values
+
+As a user, when I click on a point value I will be asked a question
+
+As a user, once the question has been asked I can see a timer showing me the time I have to answer a question
+
+As a user, If I fail to answer a question in the given time the question will close and my score will be unaffected 
+
+As a user, If I answer a question correctly my score will be increased by the point value on the on the question selected
+
+As a user, If I answer a question incorrectly my score will be decreased by the point value on the questions selected 
+
+As a user, After a unseen period of time the game will start the next round
+
+As a user, at the start of the 2nd round the game board is refilled and I continue like the first round
+
+As a user, at the start of the third round I am given a question and asked to wager from my earned points 
+
+As a user, if I answer the third round question correctly I gain the value of my wager
+
+As a user, if I answer the third round question incorrectly I lose the value of my wager
+
+As a user, after the third round I am shown my score and asked if I want to play again
