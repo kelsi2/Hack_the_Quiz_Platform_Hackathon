@@ -1,11 +1,26 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "../store/actions/questionsActions";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuestions } from "../store/actions/questionsActions";
 
 const Questions = () => {
   const dispatch = useDispatch();
   const usersQuestionData = useSelector((state) => state.questionsList);
-  const {loading, error, questions, questions2, questions3, questions4, questions5, questions6, category, category1, category2, category3, category4, category5, category6} = usersQuestionData;
+  const {
+    loading,
+    error,
+    questions,
+    questions2,
+    questions3,
+    questions4,
+    questions5,
+    questions6,
+    category,
+    category1,
+    category2,
+    category3,
+    category4,
+    category5,
+  } = usersQuestionData;
   console.log(usersQuestionData);
   console.log(questions);
   console.log(questions2);
@@ -19,11 +34,33 @@ const Questions = () => {
     usersQuestionData ? (
       <div>
         <h1>{`${category.title}`}</h1>
-        {questions2.clues.map((q => <h3>{q.question}</h3>))}
+        {questions.clues.map((q) => (
+          <h3>{q.question}</h3>
+        ))}
+        <h1>{`${category1.title}`}</h1>
+        {questions2.clues.map((q) => (
+          <h3>{q.question}</h3>
+        ))}
+        <h1>{`${category2.title}`}</h1>
+        {questions3.clues.map((q) => (
+          <h3>{q.question}</h3>
+        ))}
+        <h1>{`${category3.title}`}</h1>
+        {questions4.clues.map((q) => (
+          <h3>{q.question}</h3>
+        ))}
+        <h1>{`${category4.title}`}</h1>
+        {questions5.clues.map((q) => (
+          <h3>{q.question}</h3>
+        ))}
+        <h1>{`${category5.title}`}</h1>
+        {questions6.clues.map((q) => (
+          <h3>{q.question}</h3>
+        ))}
       </div>
-    ) :
-
-      (<h3>Loading...</h3>)
+    ) : (
+      <h3>Loading...</h3>
+    )
     // <div>
     //   <div>
     //     {loading
