@@ -31,7 +31,7 @@ const Questions = () => {
     // const items = this.state.toDoList.map(function(item){
     //   return <li> {item} </li>;
     // });
-    usersQuestionData ? (
+    category !== "" ? (
       <div>
         <h1>{`${category.title}`}</h1>
         {questions.clues.map((q) => (
