@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-function App() {
+function App(props) {
+  const [category, setCategory] = useState([]);
+  // const { category } = props;
+  //do 6 different calls (promose all) TODO for categories
+  useEffect(() => {
+    axios
+      .get("http://jservice.io/api/category?id=117")
+      .then((response) => {
+        console.log(response.data.clues);
+        // setCategory(JSON.stringify(response.data.clues));
+        setCategory(response.data.clues[0].question);
+        console.log(category);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Jeopardy!</h1>
+      <table>
+        <tr>
+          <th>{category}</th>
+          {/* {category.clues[0].question} */}
+          <th>Lastname</th>
+          <th>Age</th>
+        </tr>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </table>
     </div>
   );
 }
