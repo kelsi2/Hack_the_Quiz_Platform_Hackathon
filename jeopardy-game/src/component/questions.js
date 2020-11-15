@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuestions } from "../store/actions/questionsActions";
+import "../questionStyle.css";
 
 const Questions = () => {
   const dispatch = useDispatch();
@@ -24,42 +25,68 @@ const Questions = () => {
   console.log(usersQuestionData);
   console.log(questions);
   console.log(questions2);
+  console.log(questions6);
   useEffect(() => {
     dispatch(getQuestions());
   }, [dispatch]);
+
+  const handleClick = () => {
+    //find some way to carry the question clicked on as props
+    console.log(questions6.clues[5].question);
+  };
+
   return (
     // const items = this.state.toDoList.map(function(item){
     //   return <li> {item} </li>;
     // });
     category !== "" ? (
       <div>
-        <h1>{`${category.title}`}</h1>
-        {questions.clues.map((q) => (
-          <h3>{q.question}</h3>
-        ))}
-        <h1>{`${category1.title}`}</h1>
-        {questions2.clues.map((q) => (
-          <h3>{q.question}</h3>
-        ))}
-        <h1>{`${category2.title}`}</h1>
-        {questions3.clues.map((q) => (
-          <h3>{q.question}</h3>
-        ))}
-        <h1>{`${category3.title}`}</h1>
-        {questions4.clues.map((q) => (
-          <h3>{q.question}</h3>
-        ))}
-        <h1>{`${category4.title}`}</h1>
-        {questions5.clues.map((q) => (
-          <h3>{q.question}</h3>
-        ))}
-        <h1>{`${category5.title}`}</h1>
-        {questions6.clues.map((q) => (
-          <h3>{q.question}</h3>
-        ))}
+        <td>
+          <th>{`${category.title}`}</th>
+          {questions.clues.map((q) => (
+            <tr>{q.value}</tr>
+          ))}
+        </td>
+
+        <td>
+          <th>{`${category1.title}`}</th>
+          {questions2.clues.map((q) => (
+            <tr>{q.value}</tr>
+          ))}
+        </td>
+
+        <td>
+          <th>{`${category2.title}`}</th>
+          {questions3.clues.map((q) => (
+            <tr>{q.value}</tr>
+          ))}
+        </td>
+
+        <td>
+          <th>{`${category3.title}`}</th>
+          {questions4.clues.map((q) => (
+            <tr>{q.value}</tr>
+          ))}
+        </td>
+
+        <td>
+          <th>{`${category4.title}`}</th>
+          {questions5.clues.slice(0, 5).map((q) => (
+            <tr>{q.value}</tr>
+          ))}
+        </td>
+
+        <td>
+          <th>{`${category5.title}`}</th>
+          {questions6.clues.slice(5, 10).map((q) => (
+            <tr className="question" onClick={handleClick}>
+              {q.value}
+            </tr>
+          ))}
+        </td>
       </div>
     ) : (
-      <h3>Loading...</h3>
+      <tr>Loading...</tr>
     )
     // <div>
     //   <div>
@@ -67,7 +94,7 @@ const Questions = () => {
     //       ? "Loading..."
     //       : error
     //         ? error.message
-    //         : questions.clues.map((q) => {return (<> <h4>{`${q.category.title}`}</h4> <h3>{`${q.question}`}</h3>)</>)
+    //         : questions.clues.map((q) => {return (<> <h4>{`${q.category.title}`}</h4> <tr>{`${q.question}`}</tr>)</>)
     //   </div>
 
     //   <div>
@@ -75,7 +102,7 @@ const Questions = () => {
     //       ? "Loading..."
     //       : error
     //         ? error.message
-    //         : questions2.clues.map((q) => <h3>{q.question}</h3>)}
+    //         : questions2.clues.map((q) => <tr>{q.question}</tr>)}
     //   </div>
 
     // </div>
