@@ -101,7 +101,7 @@ const Questions = (props) => {
 
         <td>
           <th>{`${category5.title}`}</th>
-          {questions6.clues.slice(5, 10).map((q) => (
+          {questions6.clues.slice(9, 14).map((q) => (
             <tr className="question">
               <button
                 type="button"
@@ -109,9 +109,8 @@ const Questions = (props) => {
                 id={q.id}
                 qtext={q.question}
               >
-                react-spring
+                {q.value}
               </button>
-              {q.value}
             </tr>
           ))}
         </td>
