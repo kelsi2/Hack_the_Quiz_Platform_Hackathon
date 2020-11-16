@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuestions } from "../store/actions/questionsActions";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getQuestions} from "../store/actions/questionsActions";
 import "../questionStyle.css";
+import Modal from "./Modal";
 
-const Questions = () => {
+const Questions = (props) => {
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
     loading,
@@ -30,17 +32,30 @@ const Questions = () => {
     dispatch(getQuestions());
   }, [dispatch]);
 
-  const handleClick = () => {
-    //find some way to carry the question clicked on as props
-    console.log(questions6.clues[5].question);
+  // const handleClick = (props) => {
+  //   //find some way to carry the question clicked on as props
+  //   console.log(questions6.clues[5].question);
+  //   return <Modal open={props.handleOpen} />;
+  // };
+
+  const toggleModal = () => {
+    console.log("triggered modal");
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    console.log("close triggered");
+    toggleModal();
   };
 
   return (
+
     // const items = this.state.toDoList.map(function(item){
     //   return <li> {item} </li>;
     // });
     category !== "" ? (
       <div>
+        <Modal open={open} onClose={() => handleClose()} />
         <td>
           <th>{`${category.title}`}</th>
           {questions.clues.map((q) => (
@@ -79,34 +94,36 @@ const Questions = () => {
         <td>
           <th>{`${category5.title}`}</th>
           {questions6.clues.slice(5, 10).map((q) => (
-            <tr className="question" onClick={handleClick}>
+            <tr className="question">
+              <button type="button" onClick={toggleModal}>
+                react-spring
+              </button>
               {q.value}
             </tr>
           ))}
         </td>
       </div>
     ) : (
-      <tr>Loading...</tr>
-    )
-    // <div>
-    //   <div>
-    //     {loading
-    //       ? "Loading..."
-    //       : error
-    //         ? error.message
-    //         : questions.clues.map((q) => {return (<> <h4>{`${q.category.title}`}</h4> <tr>{`${q.question}`}</tr>)</>)
-    //   </div>
+        <tr>Loading...</tr>
+      ));
+  // <div>
+  //   <div>
+  //     {loading
+  //       ? "Loading..."
+  //       : error
+  //         ? error.message
+  //         : questions.clues.map((q) => {return (<> <h4>{`${q.category.title}`}</h4> <tr>{`${q.question}`}</tr>)</>)
+  //   </div>
 
-    //   <div>
-    //     {loading
-    //       ? "Loading..."
-    //       : error
-    //         ? error.message
-    //         : questions2.clues.map((q) => <tr>{q.question}</tr>)}
-    //   </div>
+  //   <div>
+  //     {loading
+  //       ? "Loading..."
+  //       : error
+  //         ? error.message
+  //         : questions2.clues.map((q) => <tr>{q.question}</tr>)}
+  //   </div>
 
-    // </div>
-  );
+  // </div>
 };
 
 export default Questions;
