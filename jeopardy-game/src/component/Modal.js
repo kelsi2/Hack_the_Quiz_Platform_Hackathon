@@ -59,13 +59,9 @@ Fade.propTypes = {
 
 export default function SpringModal(props) {
   const classes = useStyles();
-  console.log(props);
 
   return (
     <div>
-      {/* <button type="button" onClick={handleOpen}>
-        react-spring
-      </button> */}
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
@@ -82,7 +78,7 @@ export default function SpringModal(props) {
         <Fade in={props.open} onClose={props.handleClose}>
           <div className={classes.paper}>
             <h2 id="spring-modal-title">{`${props.category}`}</h2>
-            <p id="spring-modal-description">{`${props.questionID}`}</p>
+            <p id="spring-modal-description">{`${props.questionText}`}</p>
             <button onClick={props.onClose}>Submit</button>
           </div>
         </Fade>

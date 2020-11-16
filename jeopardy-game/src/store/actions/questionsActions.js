@@ -1,8 +1,8 @@
-import {GET_QUESTIONS, QUESTIONS_ERROR} from "../getQuestions";
+import { GET_QUESTIONS, QUESTIONS_ERROR } from "../getQuestions";
 import axios from "axios";
 
 const one = `http://jservice.io/api/category?id=117`;
-const two = `http://jservice.io/api/category?id=15`;
+const two = `http://jservice.io/api/category?id=26`;
 const three = `http://jservice.io/api/category?id=217`;
 const four = `http://jservice.io/api/category?id=400`;
 const five = `http://jservice.io/api/category?id=780`;
@@ -27,13 +27,12 @@ export const getQuestions = () => async (dispatch) => {
     promiseArray.push(requestSix);
 
     const responses = await Promise.all(promiseArray);
-    const responseData = responses.map(response => response.data);
+    const responseData = responses.map((response) => response.data);
 
     dispatch({
       type: GET_QUESTIONS,
-      payload: responseData
+      payload: responseData,
     });
-
   } catch (e) {
     dispatch({
       type: QUESTIONS_ERROR,
