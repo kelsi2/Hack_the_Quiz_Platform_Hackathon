@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,15 +13,29 @@ code {
     monospace;
 }
 
-table,
-th,
-td,
-tr {
-  border: 1px solid black;
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#jeopardy-board {
+  position: absolute;
+  width: auto;
+  background: #0015a0;
+  color: #ffffff;
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 4px 4px #000000;
+}
+
+table button {
+  color: #efaa50;
+  font-size: 600%;
+  background-color: #0015a0;
   width: auto;
 }
 
 .question {
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 20px;
+  width: auto
 }
