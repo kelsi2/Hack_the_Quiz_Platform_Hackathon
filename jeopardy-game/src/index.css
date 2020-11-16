@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-/* table,
+table,
 th,
 td,
 tr {
@@ -23,4 +23,4 @@ tr {
 .question {
   border: 1px solid black;
   padding: 20px;
-} */
+}

@@ -1,29 +1,36 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {makeStyles} from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import {useSpring, animated} from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import { useSpring, animated } from "react-spring/web.cjs"; // web.cjs is required for IE 11 support
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
-  const {in: open, handleClose, children, onEnter, onExited, ...other} = props;
+  const {
+    in: open,
+    handleClose,
+    children,
+    onEnter,
+    onExited,
+    ...other
+  } = props;
   const style = useSpring({
-    from: {opacity: 0},
-    to: {opacity: open ? 1 : 0},
+    from: { opacity: 0 },
+    to: { opacity: open ? 1 : 0 },
     onStart: () => {
       if (open && onEnter) {
         onEnter();
@@ -52,6 +59,7 @@ Fade.propTypes = {
 
 export default function SpringModal(props) {
   const classes = useStyles();
+  console.log(props);
 
   return (
     <div>
@@ -63,6 +71,7 @@ export default function SpringModal(props) {
         aria-describedby="spring-modal-description"
         className={classes.modal}
         open={props.open}
+        questionid={props.dataid}
         onClose={props.handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -72,11 +81,9 @@ export default function SpringModal(props) {
       >
         <Fade in={props.open} onClose={props.handleClose}>
           <div className={classes.paper}>
-            <h2 id="spring-modal-title">Spring modal</h2>
-            <p id="spring-modal-description">react-spring animates me.</p>
-            <button onClick={props.handleClose}>
-              Subscribe
-              </button>
+            <h2 id="spring-modal-title">{`${props.category}`}</h2>
+            <p id="spring-modal-description">{`${props.questionID}`}</p>
+            <button onClick={props.onClose}>Submit</button>
           </div>
         </Fade>
       </Modal>

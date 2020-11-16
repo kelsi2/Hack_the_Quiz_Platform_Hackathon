@@ -1,16 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "../store/actions/questionsActions";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuestions } from "../store/actions/questionsActions";
 import "../questionStyle.css";
 import Modal from "./Modal";
 
 const Questions = (props) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const [questionText, setQuestionText] = useState("");
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
-    loading,
-    error,
     questions,
     questions2,
     questions3,
@@ -38,24 +37,33 @@ const Questions = (props) => {
   //   return <Modal open={props.handleOpen} />;
   // };
 
-  const toggleModal = () => {
+  const toggleModal = (event) => {
+    console.log(event.target.attributes[2].nodeValue);
     console.log("triggered modal");
+    setQuestionText(event.target.attributes[2].nodeValue);
+    // console.log(questionID);
     setOpen(true);
   };
 
   const handleClose = () => {
     console.log("close triggered");
-    toggleModal();
+    setOpen(false);
   };
 
   return (
-
     // const items = this.state.toDoList.map(function(item){
     //   return <li> {item} </li>;
     // });
     category !== "" ? (
       <div>
-        <Modal open={open} onClose={() => handleClose()} />
+        <Modal
+          open={open}
+          onClose={handleClose}
+          questionID={questionText}
+          category={category5.title}
+          // question={q.question}
+        />
+
         <td>
           <th>{`${category.title}`}</th>
           {questions.clues.map((q) => (
@@ -95,7 +103,12 @@ const Questions = (props) => {
           <th>{`${category5.title}`}</th>
           {questions6.clues.slice(5, 10).map((q) => (
             <tr className="question">
-              <button type="button" onClick={toggleModal}>
+              <button
+                type="button"
+                onClick={toggleModal}
+                id={q.id}
+                qtext={q.question}
+              >
                 react-spring
               </button>
               {q.value}
@@ -104,8 +117,9 @@ const Questions = (props) => {
         </td>
       </div>
     ) : (
-        <tr>Loading...</tr>
-      ));
+      <tr>Loading...</tr>
+    )
+  );
   // <div>
   //   <div>
   //     {loading
