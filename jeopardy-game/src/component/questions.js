@@ -1,9 +1,9 @@
-import React, {useEffect, useState, useContext} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "../store/actions/questionsActions";
+import React, { useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuestions } from "../store/actions/questionsActions";
 // import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
-import {AppContext, AnswerContext} from "../App";
+import { AppContext, AnswerContext } from "../App";
 
 const Questions = (props) => {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ const Questions = (props) => {
   const [categoryText, setCategoryText] = useState("");
   const [answerText, setAnswerText] = useState("");
   // const [usersAnswer, setUsersAnswer] = useState("");
+  const [time, setTime] = useState(30000);
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
   const [usersAnswer, setUsersAnswer] = useContext(AnswerContext);
@@ -50,6 +51,16 @@ const Questions = (props) => {
     setAnswerText(event.target.attributes[5].nodeValue);
     console.log(answerText);
     setOpen(true);
+    setTimeout(() => {
+      handleClose();
+    }, time);
+
+    setInterval(() => {
+      setTime(time - 1000);
+    }, 1000);
+    return () => {
+      clearInterval(1000);
+    };
   };
 
   // const usePrevious = (usersAnswer) => {
@@ -81,6 +92,9 @@ const Questions = (props) => {
           category={categoryText}
           qpoints={qpoints}
           userAnswer={usersAnswer}
+          timer={time}
+          // onBackdropClick={onBackdropClick}
+          // onEscapeKeyDown={onEscapeKeyDown}
         />
 
         <td>
@@ -197,12 +211,15 @@ const Questions = (props) => {
           ))}
         </td>
       </table>
-      <h2 className="scoreboard">Your Answer: {`${usersAnswer}`}<br />
-      Score: {`${score}`}</h2>
+      <h2 className="scoreboard">
+        Your Answer: {`${usersAnswer}`}
+        <br />
+        Score: {`${score}`}
+      </h2>
     </div>
   ) : (
-      <tr>Loading...</tr>
-    );
+    <tr>Loading...</tr>
+  );
 };
 
 export default Questions;

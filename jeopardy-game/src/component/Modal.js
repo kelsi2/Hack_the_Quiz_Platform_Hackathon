@@ -1,9 +1,9 @@
-import React, {useState, useContext, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useState, useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import {Modal, Backdrop, makeStyles, TextField} from '@material-ui/core';
-import {useSpring, animated} from "react-spring/web.cjs";
-import {AnswerContext} from "../App";
+import { Modal, Backdrop, makeStyles, TextField } from "@material-ui/core";
+import { useSpring, animated } from "react-spring/web.cjs";
+import { AnswerContext } from "../App";
 // import {getScore} from "../store/actions/scoreActions";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,8 +30,8 @@ const Fade = React.forwardRef(function Fade(props, ref) {
     ...other
   } = props;
   const style = useSpring({
-    from: {opacity: 0},
-    to: {opacity: open ? 1 : 0},
+    from: { opacity: 0 },
+    to: { opacity: open ? 1 : 0 },
     onStart: () => {
       if (open && onEnter) {
         onEnter();
@@ -61,13 +61,13 @@ Fade.propTypes = {
 export default function SpringModal(props) {
   const [answer, setAnswer] = useState("");
   const [userAnswer, setUserAnswer] = useContext(AnswerContext);
+  // const [time, setTime] = useContext(TimeContext);
   // const [score, setScore] = useContext(AppContext);
 
   const classes = useStyles();
 
   // useEffect((event) => {
   // }, []);
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -77,7 +77,11 @@ export default function SpringModal(props) {
     console.log("handleSubmit answer " + answer);
   };
 
-
+  // const questionTimer = () => {
+  //   setTimeout(() => {
+  //     handleSubmit();
+  //   }, 10000);
+  // };
 
   const handleChange = (event) => {
     const eventValue = event.target.value;
@@ -105,10 +109,25 @@ export default function SpringModal(props) {
         <Fade in={props.open} onClose={props.handleClose}>
           <div className={classes.paper}>
             <h2 id="spring-modal-title">{`${props.category}`}</h2>
+            <h2 id="timer">{`${props.timer}`}</h2>
             <p id="spring-modal-description">{`${props.questionText}`}</p>
-            <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
-              <TextField onChange={handleChange} value={answer} name="answer-field" id="outlined-basic" label="Enter answer here: " variant="outlined" />
-              <button type="submit" onClick={props.onClose}>Submit</button>
+            <form
+              onSubmit={handleSubmit}
+              className={classes.root}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
+                onChange={handleChange}
+                value={answer}
+                name="answer-field"
+                id="outlined-basic"
+                label="Enter answer here: "
+                variant="outlined"
+              />
+              <button type="submit" onClick={props.onClose}>
+                Submit
+              </button>
             </form>
           </div>
         </Fade>
