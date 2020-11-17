@@ -18,6 +18,7 @@ As a user, When I look at the game board I see 6 columns each with
 As a user, when I click on a point value I will be asked a question
 
 As a user, once the question has been asked I can see a timer showing me the time I have to answer a question
+//answer can be scrambled with bCrypt
 
 As a user, If I fail to answer a question in the given time the question will close and my score will be unaffected 
 

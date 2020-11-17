@@ -1,13 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getQuestions} from "../store/actions/questionsActions";
+// import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
+import {AppContext, AnswerContext} from "../App";
 
 const Questions = (props) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [questionText, setQuestionText] = useState("");
   const [categoryText, setCategoryText] = useState("");
+  const [answerText, setAnswerText] = useState("");
+  // const [usersAnswer, setUsersAnswer] = useState("");
+  const [qpoints, setQPoints] = useState(0);
+  const [score, setScore] = useContext(AppContext);
+  const [usersAnswer, setUsersAnswer] = useContext(AnswerContext);
+
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
     questions,
@@ -27,13 +35,39 @@ const Questions = (props) => {
     dispatch(getQuestions());
   }, [dispatch]);
 
+  // const usersScoreData = useSelector((state) => state.scoreList);
+  // const {
+  //   points
+  // } = usersScoreData;
+  // useEffect(() => {
+  //   dispatch(getScore());
+  // }, [dispatch]);
+
   const toggleModal = (event) => {
     setQuestionText(event.target.attributes[2].nodeValue);
-    setCategoryText(event.target.attributes[3].nodeValue);
+    setCategoryText(event.target.attributes[4].nodeValue);
+    setQPoints(parseInt(event.target.attributes[3].nodeValue));
+    setAnswerText(event.target.attributes[5].nodeValue);
+    console.log(answerText);
     setOpen(true);
   };
 
+  // const usePrevious = (usersAnswer) => {
+  //   const ref = useRef();
+  //   useEffect(() => {
+  //     ref.current = usersAnswer;
+  //   });
+  //   return ref.current;
+  // };
+
   const handleClose = () => {
+    console.log(usersAnswer);
+    if (answerText === usersAnswer) {
+      setScore(qpoints + score);
+      // setUsersAnswer(usersAnswer);
+
+      console.log(usersAnswer);
+    }
     setOpen(false);
   };
 
@@ -45,6 +79,8 @@ const Questions = (props) => {
           onClose={handleClose}
           questionText={questionText}
           category={categoryText}
+          qpoints={qpoints}
+          userAnswer={usersAnswer}
         />
 
         <td>
@@ -56,7 +92,9 @@ const Questions = (props) => {
                 onClick={toggleModal}
                 id={q.id}
                 qtext={q.question}
+                qPoints={q.value}
                 qcategory={category.title}
+                qanswer={q.answer}
               >
                 {q.value}
               </button>
@@ -73,7 +111,9 @@ const Questions = (props) => {
                 onClick={toggleModal}
                 id={q.id}
                 qtext={q.question}
+                qPoints={q.value}
                 qcategory={category1.title}
+                qanswer={q.answer}
               >
                 {q.value}
               </button>
@@ -90,7 +130,9 @@ const Questions = (props) => {
                 onClick={toggleModal}
                 id={q.id}
                 qtext={q.question}
+                qPoints={q.value}
                 qcategory={category2.title}
+                qanswer={q.answer}
               >
                 {q.value}
               </button>
@@ -107,7 +149,9 @@ const Questions = (props) => {
                 onClick={toggleModal}
                 id={q.id}
                 qtext={q.question}
+                qPoints={q.value}
                 qcategory={category3.title}
+                qanswer={q.answer}
               >
                 {q.value}
               </button>
@@ -124,7 +168,9 @@ const Questions = (props) => {
                 onClick={toggleModal}
                 id={q.id}
                 qtext={q.question}
+                qPoints={q.value}
                 qcategory={category4.title}
+                qanswer={q.answer}
               >
                 {q.value}
               </button>
@@ -141,7 +187,9 @@ const Questions = (props) => {
                 onClick={toggleModal}
                 id={q.id}
                 qtext={q.question}
+                qPoints={q.value}
                 qcategory={category5.title}
+                qanswer={q.answer}
               >
                 {q.value}
               </button>
@@ -149,6 +197,8 @@ const Questions = (props) => {
           ))}
         </td>
       </table>
+      <h2 className="scoreboard">Your Answer: {`${usersAnswer}`}<br />
+      Score: {`${score}`}</h2>
     </div>
   ) : (
       <tr>Loading...</tr>

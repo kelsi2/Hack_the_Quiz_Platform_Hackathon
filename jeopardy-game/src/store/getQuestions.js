@@ -1,7 +1,2 @@
 export const GET_QUESTIONS = "GET_QUESTIONS";
-// export const GET_QUESTIONS2 = "GET_QUESTIONS2";
-// export const GET_QUESTIONS3 = "GET_QUESTIONS3";
-// export const GET_QUESTIONS4 = "GET_QUESTIONS4";
-// export const GET_QUESTIONS5 = "GET_QUESTIONS5";
-// export const GET_QUESTIONS6 = "GET_QUESTIONS6";
 export const QUESTIONS_ERROR = "QUESTIONS_ERROR";

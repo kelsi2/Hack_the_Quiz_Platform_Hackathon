@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState, useContext, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import PropTypes from "prop-types";
-import {makeStyles} from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
+import {Modal, Backdrop, makeStyles, TextField} from '@material-ui/core';
 import {useSpring, animated} from "react-spring/web.cjs";
+import {AnswerContext} from "../App";
+// import {getScore} from "../store/actions/scoreActions";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -58,7 +59,33 @@ Fade.propTypes = {
 };
 
 export default function SpringModal(props) {
+  const [answer, setAnswer] = useState("");
+  const [userAnswer, setUserAnswer] = useContext(AnswerContext);
+  // const [score, setScore] = useContext(AppContext);
+
   const classes = useStyles();
+
+  // useEffect((event) => {
+  // }, []);
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // props.userAnswer = answer;
+    setUserAnswer(answer);
+    console.log(userAnswer);
+    console.log("handleSubmit answer " + answer);
+  };
+
+
+
+  const handleChange = (event) => {
+    const eventValue = event.target.value;
+
+    setAnswer(eventValue);
+    console.log(eventValue);
+    console.log(answer);
+  };
 
   return (
     <div>
@@ -79,7 +106,10 @@ export default function SpringModal(props) {
           <div className={classes.paper}>
             <h2 id="spring-modal-title">{`${props.category}`}</h2>
             <p id="spring-modal-description">{`${props.questionText}`}</p>
-            <button onClick={props.onClose}>Submit</button>
+            <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
+              <TextField onChange={handleChange} value={answer} name="answer-field" id="outlined-basic" label="Enter answer here: " variant="outlined" />
+              <button type="submit" onClick={props.onClose}>Submit</button>
+            </form>
           </div>
         </Fade>
       </Modal>

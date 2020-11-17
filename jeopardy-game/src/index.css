@@ -19,7 +19,7 @@ table {
 }
 
 #jeopardy-board {
-  position: absolute;
+  position: fixed;
   width: auto;
   background: #0015a0;
   color: #ffffff;
@@ -39,3 +39,8 @@ table button {
   padding: 20px;
   width: auto
 }
+
+/* .scoreboard {
+  position: fixed;
+  margin-top: 700px;
+} */
