@@ -44,6 +44,7 @@ const Questions = (props) => {
     if (isActive) {
       interval = setInterval(() => {
         setSeconds((seconds) => seconds - 1);
+        checkTime();
       }, 1000);
     } else if (!isActive && seconds !== 0) {
       clearInterval(interval);
@@ -59,6 +60,12 @@ const Questions = (props) => {
   const resetTimer = () => {
     setSeconds(30);
     setIsActive(false);
+  };
+  //checkTime
+  const checkTime = () => {
+    if (seconds < 1) {
+      handleClose();
+    }
   };
 
   useEffect(() => {
@@ -90,9 +97,6 @@ const Questions = (props) => {
     setAnswerText(event.target.attributes[5].nodeValue);
     console.log(answerText);
     setOpen(true);
-    // setTimeout(() => {
-    //   handleClose();
-    // }, 30000);
   };
 
   //When the modal closes
