@@ -13,7 +13,7 @@ const Questions = (props) => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const [usersAnswer, setUsersAnswer] = useContext(AnswerContext);
+  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -73,6 +73,9 @@ const Questions = (props) => {
       setScore(qpoints + score);
     }
   };
+
+  console.log("UsersAnswer:", userAnswer);
+
   const resetAnswer = () => {
     setHasAnswered(false);
     //we need a way to reset our answer once checked
@@ -108,7 +111,7 @@ const Questions = (props) => {
           questionText={questionText}
           category={categoryText}
           qpoints={qpoints}
-          userAnswer={usersAnswer}
+          userAnswer={userAnswer}
           timer={seconds}
           // onBackdropClick={onBackdropClick}
           // onEscapeKeyDown={onEscapeKeyDown}
@@ -229,7 +232,7 @@ const Questions = (props) => {
         </td>
       </table>
       <h2 className="scoreboard">
-        Your Answer: <span id="answer">{`${usersAnswer}`}</span>
+        Your Answer: <span id="answer">{userAnswer}</span>
         <br />
         Score: {`${score}`}
       </h2>

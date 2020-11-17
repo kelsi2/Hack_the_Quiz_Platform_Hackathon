@@ -9,10 +9,10 @@ function App() {
   const [score, setScore] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   // const [time, setTime] = useState(30)
-
+  console.log(userAnswer);
   return (
     <AppContext.Provider value={[score, setScore]}>
-      <AnswerContext.Provider value={[userAnswer, setUserAnswer]}>
+      <AnswerContext.Provider value={{ userAnswer, setUserAnswer }}>
         <div className="App">
           <h1>Jeopardy</h1>
           <Questions />

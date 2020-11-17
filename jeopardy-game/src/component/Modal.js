@@ -60,22 +60,23 @@ Fade.propTypes = {
 
 export default function SpringModal(props) {
   const [answer, setAnswer] = useState("");
-  const [userAnswer, setUserAnswer] = useContext(AnswerContext);
+  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
   // const [time, setTime] = useContext(TimeContext);
   // const [score, setScore] = useContext(AppContext);
 
   const classes = useStyles();
 
   const handleSubmit = (event) => {
+    console.log(event.target);
     event.preventDefault();
-    setUserAnswer(answer);
+    // setUserAnswer(answer);
     console.log(userAnswer);
-    console.log("handleSubmit answer " + answer);
+    console.log("handleSubmit answer " + userAnswer);
   };
 
   const handleChange = (event) => {
     const eventValue = event.target.value;
-    setAnswer(eventValue);
+    setUserAnswer(eventValue);
   };
 
   return (
@@ -106,7 +107,7 @@ export default function SpringModal(props) {
             >
               <TextField
                 onChange={handleChange}
-                value={answer}
+                value={userAnswer}
                 name="answer-field"
                 id="outlined-basic"
                 label="Enter answer here: "
