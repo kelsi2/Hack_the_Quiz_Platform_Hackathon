@@ -96,6 +96,8 @@ const Questions = (props) => {
 
   //When the Modal opens
   const toggleModal = (event) => {
+    console.log(event.target);
+    event.target.disabled = true;
     countDown();
     setQuestionText(event.target.attributes[2].nodeValue);
     setCategoryText(event.target.attributes[4].nodeValue);
