@@ -1,11 +1,16 @@
-body {
+html, body {
   margin: 0;
   width: 100%;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%
 }
 
 code {
@@ -48,8 +53,8 @@ form {
 .submit-button {
   font-size: 150%;
   font-weight: bold;
-  background-color: #FF3CAC;
-  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  background-color: #4834d4;
+  background-image: linear-gradient(315deg, #4834d4 0%, #0c0c0c 74%);
   color: white;
   border: none;
   padding: 1.2rem;
@@ -59,4 +64,30 @@ form {
 button:disabled {
   background: #ccc;
   color: #dddddd
+}
+
+.container {
+  background-image: url("https://static2.cbrimages.com/wordpress/wp-content/uploads/2020/04/jeopardy-logo.jpg?q=50&fit=crop&w=960&h=500");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-text {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 80px;
+  margin: 0
+}
+
+#play-button {
+  margin-bottom: 1rem;
+  width: fit-content;
+  align-self: center;
+  text-decoration: none;
 }
