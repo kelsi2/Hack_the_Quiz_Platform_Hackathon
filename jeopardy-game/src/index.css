@@ -55,3 +55,8 @@ form {
   padding: 1.2rem;
   margin: 1rem
 }
+
+button:disabled {
+  background: #ccc;
+  color: #dddddd
+}
