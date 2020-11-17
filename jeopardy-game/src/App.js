@@ -1,5 +1,5 @@
 import React, {createContext, useState} from "react";
-import Questions from "./component/questions";
+import Questions from "./component/Questions";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 export const AppContext = createContext([{}, () => { }]);
