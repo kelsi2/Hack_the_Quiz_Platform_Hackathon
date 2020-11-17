@@ -11,13 +11,13 @@ const Questions = (props) => {
   const [questionText, setQuestionText] = useState("");
   const [categoryText, setCategoryText] = useState("");
   const [answerText, setAnswerText] = useState("");
-  // const [usersAnswer, setUsersAnswer] = useState("");
-  const [time, setTime] = useState(30000);
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
   const [usersAnswer, setUsersAnswer] = useContext(AnswerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
+  const [hasAnswered, setHasAnswered] = useState(false);
+  let userInput = document.getElementById("answer");
 
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
@@ -38,13 +38,7 @@ const Questions = (props) => {
     dispatch(getQuestions());
   }, [dispatch]);
 
-  // const usersScoreData = useSelector((state) => state.scoreList);
-  // const {
-  //   points
-  // } = usersScoreData;
-  // useEffect(() => {
-  //   dispatch(getScore());
-  // }, [dispatch]);
+  //useEffect that makes the timer tick
   useEffect(() => {
     let interval = null;
     if (isActive) {
@@ -57,15 +51,34 @@ const Questions = (props) => {
     return () => clearInterval(interval);
   }, [isActive, seconds]);
 
+  //makes the timer start
   const countDown = () => {
     setIsActive(!isActive);
   };
-
+  //resets our timer
   const resetTimer = () => {
     setSeconds(30);
     setIsActive(false);
   };
 
+  useEffect(() => {
+    if (hasAnswered) {
+      checkAnswer();
+      resetAnswer();
+    }
+  }, [hasAnswered]);
+
+  const checkAnswer = () => {
+    if (answerText === userInput.innerText) {
+      setScore(qpoints + score);
+    }
+  };
+  const resetAnswer = () => {
+    setHasAnswered(false);
+    //we need a way to reset our answer once checked
+  };
+
+  //When the Modal opens
   const toggleModal = (event) => {
     countDown();
     setQuestionText(event.target.attributes[2].nodeValue);
@@ -74,29 +87,16 @@ const Questions = (props) => {
     setAnswerText(event.target.attributes[5].nodeValue);
     console.log(answerText);
     setOpen(true);
-    setTimeout(() => {
-      handleClose();
-    }, 30000);
+    // setTimeout(() => {
+    //   handleClose();
+    // }, 30000);
   };
 
-  // const usePrevious = (usersAnswer) => {
-  //   const ref = useRef();
-  //   useEffect(() => {
-  //     ref.current = usersAnswer;
-  //   });
-  //   return ref.current;
-  // };
-
+  //When the modal closes
   const handleClose = () => {
-    console.log(usersAnswer);
-    if (answerText === usersAnswer) {
-      setScore(qpoints + score);
-      // setUsersAnswer(usersAnswer);
-
-      console.log(usersAnswer);
-    }
-    setOpen(false);
+    setHasAnswered(!hasAnswered);
     resetTimer();
+    setOpen(false);
   };
 
   return category !== "" ? (
@@ -229,7 +229,7 @@ const Questions = (props) => {
         </td>
       </table>
       <h2 className="scoreboard">
-        Your Answer: {`${usersAnswer}`}
+        Your Answer: <span id="answer">{`${usersAnswer}`}</span>
         <br />
         Score: {`${score}`}
       </h2>

@@ -66,29 +66,16 @@ export default function SpringModal(props) {
 
   const classes = useStyles();
 
-  // useEffect((event) => {
-  // }, []);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    // props.userAnswer = answer;
     setUserAnswer(answer);
     console.log(userAnswer);
     console.log("handleSubmit answer " + answer);
   };
 
-  // const questionTimer = () => {
-  //   setTimeout(() => {
-  //     handleSubmit();
-  //   }, 10000);
-  // };
-
   const handleChange = (event) => {
     const eventValue = event.target.value;
-
     setAnswer(eventValue);
-    console.log(eventValue);
-    console.log(answer);
   };
 
   return (
