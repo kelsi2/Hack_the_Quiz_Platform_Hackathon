@@ -19,7 +19,7 @@ table {
 }
 
 #jeopardy-board {
-  position: fixed;
+  position: absolute;
   width: auto;
   background: #0015a0;
   color: #ffffff;
