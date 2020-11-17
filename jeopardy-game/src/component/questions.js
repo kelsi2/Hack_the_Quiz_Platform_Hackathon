@@ -79,6 +79,12 @@ const Questions = (props) => {
     if (answerText === userInput.innerText) {
       setScore(qpoints + score);
     }
+    if (answerText !== userInput.innerText && userInput.innerText !== "") {
+      setScore(score - qpoints);
+    }
+    if (userInput.innerText === "") {
+      return;
+    }
   };
 
   console.log("UsersAnswer:", userAnswer);
