@@ -16,6 +16,8 @@ const Questions = (props) => {
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
   const [usersAnswer, setUsersAnswer] = useContext(AnswerContext);
+  const [seconds, setSeconds] = useState(30);
+  const [isActive, setIsActive] = useState(false);
 
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
@@ -43,8 +45,29 @@ const Questions = (props) => {
   // useEffect(() => {
   //   dispatch(getScore());
   // }, [dispatch]);
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds((seconds) => seconds - 1);
+      }, 1000);
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
+
+  const countDown = () => {
+    setIsActive(!isActive);
+  };
+
+  const resetTimer = () => {
+    setSeconds(30);
+    setIsActive(false);
+  };
 
   const toggleModal = (event) => {
+    countDown();
     setQuestionText(event.target.attributes[2].nodeValue);
     setCategoryText(event.target.attributes[4].nodeValue);
     setQPoints(parseInt(event.target.attributes[3].nodeValue));
@@ -53,14 +76,7 @@ const Questions = (props) => {
     setOpen(true);
     setTimeout(() => {
       handleClose();
-    }, time);
-
-    setInterval(() => {
-      setTime(time - 1000);
-    }, 1000);
-    return () => {
-      clearInterval(1000);
-    };
+    }, 30000);
   };
 
   // const usePrevious = (usersAnswer) => {
@@ -80,6 +96,7 @@ const Questions = (props) => {
       console.log(usersAnswer);
     }
     setOpen(false);
+    resetTimer();
   };
 
   return category !== "" ? (
@@ -92,7 +109,7 @@ const Questions = (props) => {
           category={categoryText}
           qpoints={qpoints}
           userAnswer={usersAnswer}
-          timer={time}
+          timer={seconds}
           // onBackdropClick={onBackdropClick}
           // onEscapeKeyDown={onEscapeKeyDown}
         />
