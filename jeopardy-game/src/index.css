@@ -40,7 +40,18 @@ table button {
   width: auto
 }
 
-/* .scoreboard {
-  position: fixed;
-  margin-top: 700px;
-} */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-button {
+  font-size: 150%;
+  font-weight: bold;
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  margin: 1rem
+}
