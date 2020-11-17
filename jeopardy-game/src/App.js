@@ -1,8 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, {createContext, useState} from "react";
 import Questions from "./component/questions";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
-export const AppContext = createContext([{}, () => {}]);
-export const AnswerContext = createContext([{}, () => {}]);
+export const AppContext = createContext([{}, () => { }]);
+export const AnswerContext = createContext([{}, () => { }]);
 // export const TimerContext = createContext([{}, () => {}]);
 
 function App() {
@@ -11,14 +12,17 @@ function App() {
   // const [time, setTime] = useState(30)
   console.log(userAnswer);
   return (
-    <AppContext.Provider value={[score, setScore]}>
-      <AnswerContext.Provider value={{ userAnswer, setUserAnswer }}>
-        <div className="App">
-          <h1>Jeopardy</h1>
-          <Questions />
-        </div>
-      </AnswerContext.Provider>
-    </AppContext.Provider>
+    <Router>
+      <AppContext.Provider value={[score, setScore]}>
+        <AnswerContext.Provider value={{userAnswer, setUserAnswer}}>
+          <Switch className="App">
+            {/* <Route exact path="/" component={Home} /> */}
+            <Route path="/questions/:round" component={Questions} />
+            {/* <Route path="/results" component={Results} /> */}
+          </Switch>
+        </AnswerContext.Provider>
+      </AppContext.Provider>
+    </Router>
   );
 }
 

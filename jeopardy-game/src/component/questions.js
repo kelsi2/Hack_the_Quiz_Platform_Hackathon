@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuestions } from "../store/actions/questionsActions";
+import React, {useEffect, useState, useContext} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getQuestions} from "../store/actions/questionsActions";
 // import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
-import { AppContext, AnswerContext } from "../App";
+import {AppContext, AnswerContext} from "../App";
 
 const Questions = (props) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Questions = (props) => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
+  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -68,12 +68,6 @@ const Questions = (props) => {
     }
   };
 
-  useEffect(() => {
-    if (hasAnswered) {
-      checkAnswer();
-      resetAnswer();
-    }
-  }, [hasAnswered]);
 
   const checkAnswer = () => {
     if (answerText === userInput.innerText) {
@@ -87,7 +81,13 @@ const Questions = (props) => {
     }
   };
 
-  console.log("UsersAnswer:", userAnswer);
+  useEffect(() => {
+    if (hasAnswered) {
+      checkAnswer();
+      resetAnswer();
+    }
+  }, [hasAnswered]);
+  // console.log("UsersAnswer:", userAnswer);
 
   const resetAnswer = () => {
     setHasAnswered(false);
@@ -115,143 +115,146 @@ const Questions = (props) => {
   };
 
   return category !== "" ? (
-    <div id="jeopardy-board">
-      <table>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          questionText={questionText}
-          category={categoryText}
-          qpoints={qpoints}
-          userAnswer={userAnswer}
-          timer={seconds}
+    <>
+      <h1>Jeopardy</h1>
+      <div id="jeopardy-board">
+        <table>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            questionText={questionText}
+            category={categoryText}
+            qpoints={qpoints}
+            userAnswer={userAnswer}
+            timer={seconds}
           // onBackdropClick={onBackdropClick}
           // onEscapeKeyDown={onEscapeKeyDown}
-        />
+          />
 
-        <td>
-          <th className="question">{`${category.title}`}</th>
-          {questions.clues.slice(0, 5).map((q) => (
-            <tr className="question">
-              <button
-                type="button"
-                onClick={toggleModal}
-                id={q.id}
-                qtext={q.question}
-                qPoints={q.value}
-                qcategory={category.title}
-                qanswer={q.answer}
-              >
-                {q.value}
-              </button>
-            </tr>
-          ))}
-        </td>
+          <td>
+            <th className="question">{`${category.title}`}</th>
+            {questions.clues.slice(0, 5).map((q) => (
+              <tr className="question">
+                <button
+                  type="button"
+                  onClick={toggleModal}
+                  id={q.id}
+                  qtext={q.question}
+                  qPoints={q.value}
+                  qcategory={category.title}
+                  qanswer={q.answer}
+                >
+                  {q.value}
+                </button>
+              </tr>
+            ))}
+          </td>
 
-        <td>
-          <th className="question">{`${category1.title}`}</th>
-          {questions2.clues.slice(0, 5).map((q) => (
-            <tr className="question">
-              <button
-                type="button"
-                onClick={toggleModal}
-                id={q.id}
-                qtext={q.question}
-                qPoints={q.value}
-                qcategory={category1.title}
-                qanswer={q.answer}
-              >
-                {q.value}
-              </button>
-            </tr>
-          ))}
-        </td>
+          <td>
+            <th className="question">{`${category1.title}`}</th>
+            {questions2.clues.slice(0, 5).map((q) => (
+              <tr className="question">
+                <button
+                  type="button"
+                  onClick={toggleModal}
+                  id={q.id}
+                  qtext={q.question}
+                  qPoints={q.value}
+                  qcategory={category1.title}
+                  qanswer={q.answer}
+                >
+                  {q.value}
+                </button>
+              </tr>
+            ))}
+          </td>
 
-        <td>
-          <th className="question">{`${category2.title}`}</th>
-          {questions3.clues.slice(0, 5).map((q) => (
-            <tr className="question">
-              <button
-                type="button"
-                onClick={toggleModal}
-                id={q.id}
-                qtext={q.question}
-                qPoints={q.value}
-                qcategory={category2.title}
-                qanswer={q.answer}
-              >
-                {q.value}
-              </button>
-            </tr>
-          ))}
-        </td>
+          <td>
+            <th className="question">{`${category2.title}`}</th>
+            {questions3.clues.slice(0, 5).map((q) => (
+              <tr className="question">
+                <button
+                  type="button"
+                  onClick={toggleModal}
+                  id={q.id}
+                  qtext={q.question}
+                  qPoints={q.value}
+                  qcategory={category2.title}
+                  qanswer={q.answer}
+                >
+                  {q.value}
+                </button>
+              </tr>
+            ))}
+          </td>
 
-        <td>
-          <th className="question">{`${category3.title}`}</th>
-          {questions4.clues.slice(0, 5).map((q) => (
-            <tr className="question">
-              <button
-                type="button"
-                onClick={toggleModal}
-                id={q.id}
-                qtext={q.question}
-                qPoints={q.value}
-                qcategory={category3.title}
-                qanswer={q.answer}
-              >
-                {q.value}
-              </button>
-            </tr>
-          ))}
-        </td>
+          <td>
+            <th className="question">{`${category3.title}`}</th>
+            {questions4.clues.slice(0, 5).map((q) => (
+              <tr className="question">
+                <button
+                  type="button"
+                  onClick={toggleModal}
+                  id={q.id}
+                  qtext={q.question}
+                  qPoints={q.value}
+                  qcategory={category3.title}
+                  qanswer={q.answer}
+                >
+                  {q.value}
+                </button>
+              </tr>
+            ))}
+          </td>
 
-        <td>
-          <th className="question">{`${category4.title}`}</th>
-          {questions5.clues.slice(0, 5).map((q) => (
-            <tr className="question">
-              <button
-                type="button"
-                onClick={toggleModal}
-                id={q.id}
-                qtext={q.question}
-                qPoints={q.value}
-                qcategory={category4.title}
-                qanswer={q.answer}
-              >
-                {q.value}
-              </button>
-            </tr>
-          ))}
-        </td>
+          <td>
+            <th className="question">{`${category4.title}`}</th>
+            {questions5.clues.slice(0, 5).map((q) => (
+              <tr className="question">
+                <button
+                  type="button"
+                  onClick={toggleModal}
+                  id={q.id}
+                  qtext={q.question}
+                  qPoints={q.value}
+                  qcategory={category4.title}
+                  qanswer={q.answer}
+                >
+                  {q.value}
+                </button>
+              </tr>
+            ))}
+          </td>
 
-        <td>
-          <th className="question">{`${category5.title}`}</th>
-          {questions6.clues.slice(9, 14).map((q) => (
-            <tr className="question">
-              <button
-                type="button"
-                onClick={toggleModal}
-                id={q.id}
-                qtext={q.question}
-                qPoints={q.value}
-                qcategory={category5.title}
-                qanswer={q.answer}
-              >
-                {q.value}
-              </button>
-            </tr>
-          ))}
-        </td>
-      </table>
-      <h2 className="scoreboard">
-        Your Answer: <span id="answer">{userAnswer}</span>
-        <br />
+          <td>
+            <th className="question">{`${category5.title}`}</th>
+            {questions6.clues.slice(9, 14).map((q) => (
+              <tr className="question">
+                <button
+                  type="button"
+                  onClick={toggleModal}
+                  id={q.id}
+                  qtext={q.question}
+                  qPoints={q.value}
+                  qcategory={category5.title}
+                  qanswer={q.answer}
+                >
+                  {q.value}
+                </button>
+              </tr>
+            ))}
+          </td>
+        </table>
+        <h2 className="scoreboard">
+          Your Answer: <span id="answer">{userAnswer}</span>
+          <br />
         Score: {`${score}`}
-      </h2>
-    </div>
+        </h2>
+      </div>
+    </>
   ) : (
-    <tr>Loading...</tr>
-  );
+      <tr>Loading...</tr>
+    );
 };
 
 export default Questions;
