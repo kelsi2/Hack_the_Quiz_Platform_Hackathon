@@ -1,30 +1,41 @@
-import { GET_QUESTIONS, QUESTIONS_ERROR } from "../getQuestions";
+import {GET_QUESTIONS, QUESTIONS_ERROR} from "../getQuestions";
 import axios from "axios";
 
-const one = `http://jservice.io/api/category?id=117`;
-const two = `http://jservice.io/api/category?id=26`;
-const three = `http://jservice.io/api/category?id=217`;
-const four = `http://jservice.io/api/category?id=400`;
-const five = `http://jservice.io/api/category?id=780`;
-const six = `http://jservice.io/api/category?id=65`;
+// ROUND ONE
+const requestOne = axios.get("http://jservice.io/api/category?id=117");
+const requestTwo = axios.get("http://jservice.io/api/category?id=26");
+const requestThree = axios.get("http://jservice.io/api/category?id=217");
+const requestFour = axios.get("http://jservice.io/api/category?id=400");
+const requestFive = axios.get("http://jservice.io/api/category?id=780");
+const requestSix = axios.get("http://jservice.io/api/category?id=65");
 
-const requestOne = axios.get(one);
-const requestTwo = axios.get(two);
-const requestThree = axios.get(three);
-const requestFour = axios.get(four);
-const requestFive = axios.get(five);
-const requestSix = axios.get(six);
+// ROUND TWO
+const requestSeven = axios.get("http://jservice.io/api/category?id=1");
+const requestEight = axios.get("http://jservice.io/api/category?id=52");
+const requestNine = axios.get("http://jservice.io/api/category?id=625");
+const requestTen = axios.get("http://jservice.io/api/category?id=1013");
+const requestEleven = axios.get("http://jservice.io/api/category?id=2658");
+const requestTwelve = axios.get("http://jservice.io/api/category?id=3591");
 
 export const getQuestions = () => async (dispatch) => {
   try {
     let promiseArray = [];
 
+    // ROUND ONE
     promiseArray.push(requestOne);
     promiseArray.push(requestTwo);
     promiseArray.push(requestThree);
     promiseArray.push(requestFour);
     promiseArray.push(requestFive);
     promiseArray.push(requestSix);
+
+    // ROUND TWO
+    promiseArray.push(requestSeven);
+    promiseArray.push(requestEight);
+    promiseArray.push(requestNine);
+    promiseArray.push(requestTen);
+    promiseArray.push(requestEleven);
+    promiseArray.push(requestTwelve);
 
     const responses = await Promise.all(promiseArray);
     const responseData = responses.map((response) => response.data);

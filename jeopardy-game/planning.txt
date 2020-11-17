@@ -6,10 +6,6 @@ Core Requirements
 TODOS
 /////////////////
 
-As a user, When the page loads a landing page asking if I want to play Kelsi
-
-As a user, When Click play a game board appears Landing
-
 As a user, After a unseen period of time the game will start the next round Results
 
 As a user, at the start of the 2nd round the game board is refilled and I continue like the first round
@@ -41,3 +37,7 @@ As a user, If I fail to answer a question in the given time the question will cl
 As a user, If I answer a question correctly my score will be increased by the point value on the on the question selected x
 
 As a user, If I answer a question incorrectly my score will be decreased by the point value on the questions selected x
+
+As a user, When the page loads a landing page asking if I want to play X
+
+As a user, When Click play a game board appears X
