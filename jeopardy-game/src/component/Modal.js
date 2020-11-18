@@ -1,9 +1,9 @@
-import React, {useState, useContext, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useState, useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import {Modal, Backdrop, makeStyles, TextField} from "@material-ui/core";
-import {useSpring, animated} from "react-spring/web.cjs";
-import {AnswerContext} from "../App";
+import { Modal, Backdrop, makeStyles, TextField } from "@material-ui/core";
+import { useSpring, animated } from "react-spring/web.cjs";
+import { AnswerContext } from "../App";
 import theme from "../mui";
 
 const useStyles = makeStyles(() => ({
@@ -29,8 +29,8 @@ const Fade = React.forwardRef(function Fade(props, ref) {
     ...other
   } = props;
   const style = useSpring({
-    from: {opacity: 0},
-    to: {opacity: open ? 1 : 0},
+    from: { opacity: 0 },
+    to: { opacity: open ? 1 : 0 },
     onStart: () => {
       if (open && onEnter) {
         onEnter();
@@ -56,7 +56,7 @@ Fade.propTypes = {
 };
 export default function SpringModal(props) {
   const [answer, setAnswer] = useState("");
-  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
+  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
   // const [time, setTime] = useContext(TimeContext);
   // const [score, setScore] = useContext(AppContext);
   const classes = useStyles();
@@ -105,7 +105,12 @@ export default function SpringModal(props) {
                 label="Enter answer here: "
                 variant="outlined"
               />
-              <button className="submit-button" type="submit" onClick={props.onClose}>
+              <button
+                className="submit-button"
+                type="submit"
+                onClick={props.onClose}
+                disabled={false}
+              >
                 Submit
               </button>
             </form>

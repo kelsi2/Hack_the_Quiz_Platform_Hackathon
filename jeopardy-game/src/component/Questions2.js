@@ -1,10 +1,10 @@
-import React, {useEffect, useState, useContext} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "../store/actions/questionsActions";
+import React, { useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuestions } from "../store/actions/questionsActions";
 // import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
-import {AppContext, AnswerContext} from "../App";
-import {Link, useHistory} from "react-router-dom";
+import { AppContext, AnswerContext } from "../App";
+import { Link, useHistory } from "react-router-dom";
 
 const Questions2 = (props) => {
   const dispatch = useDispatch();
@@ -15,13 +15,14 @@ const Questions2 = (props) => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
+  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [roundTime, setRoundTime] = useState(1000);
   const [answeredQuetions, setAnsweredQuestions] = useState(0);
   let userInput = document.getElementById("answer");
+  const correctAnswer = document.getElementById("correctAnswer");
 
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
@@ -44,10 +45,8 @@ const Questions2 = (props) => {
 
   //global round timer
   useEffect(() => {
-    console.log("In Global Timer UseEffect");
     const interval = setInterval(() => {
       setRoundTime((roundTime) => roundTime - 1);
-      console.log(roundTime);
       checkRoundTime();
     }, 1000);
     return () => clearInterval(interval);
@@ -57,7 +56,7 @@ const Questions2 = (props) => {
   const checkRoundTime = () => {
     if (roundTime < 1) {
       //TODO REMAP TO 3RD ROUND
-      history.push('/results/2');
+      history.push("/results/2");
     }
   };
 
@@ -91,7 +90,6 @@ const Questions2 = (props) => {
     }
   };
 
-
   const checkAnswer = () => {
     if (answerText === userInput.innerText) {
       setScore(qpoints + score);
@@ -120,14 +118,14 @@ const Questions2 = (props) => {
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
       //TODO REMAP TO 3RD ROUND
-      history.push('/results/2');
+      history.push("/results/2");
     }
     return;
   };
 
   //When the Modal opens
   const toggleModal = (event) => {
-    console.log(event.target);
+    correctAnswer.classList.add("hide");
     event.target.disabled = true;
     setAnsweredQuestions(answeredQuetions + 1);
     countDown();
@@ -140,11 +138,13 @@ const Questions2 = (props) => {
   };
 
   //When the modal closes
-  const handleClose = () => {
+  const handleClose = (event) => {
+    event.target.disabled = true;
     setHasAnswered(!hasAnswered);
     resetTimer();
     checkNumberAnsweredQuestions();
     setOpen(false);
+    correctAnswer.classList.remove("hide");
   };
 
   return category6 !== "" ? (
@@ -159,8 +159,8 @@ const Questions2 = (props) => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-          // onBackdropClick={onBackdropClick}
-          // onEscapeKeyDown={onEscapeKeyDown}
+            // onBackdropClick={onBackdropClick}
+            // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <td>
@@ -279,14 +279,17 @@ const Questions2 = (props) => {
         </table>
         <h2 className="scoreboard">
           Your Answer: <span id="answer">{userAnswer}</span>
+          <div id="correctAnswer" className="hide">
+            The correct answer was: {answerText}
+          </div>
           <br />
-        Score: {`${score}`}
+          Score: {`${score}`}
         </h2>
       </div>
     </>
   ) : (
-      <tr>Loading...</tr>
-    );
+    <tr>Loading...</tr>
+  );
 };
 
 export default Questions2;

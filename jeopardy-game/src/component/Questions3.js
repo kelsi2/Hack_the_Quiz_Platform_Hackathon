@@ -1,11 +1,11 @@
-import React, {useEffect, useState, useContext} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "../store/actions/questionsActions";
+import React, { useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuestions } from "../store/actions/questionsActions";
 // import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import WagerModal from "./WagerModal";
-import {AppContext, AnswerContext, WagerContext} from "../App";
-import {Link, useHistory} from "react-router-dom";
+import { AppContext, AnswerContext, WagerContext } from "../App";
+import { Link, useHistory } from "react-router-dom";
 
 const Questions3 = (props) => {
   const dispatch = useDispatch();
@@ -17,20 +17,18 @@ const Questions3 = (props) => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
-  const {wager, setWager} = useContext(WagerContext);
+  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
+  const { wager, setWager } = useContext(WagerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [roundTime, setRoundTime] = useState(1000);
   const [answeredQuetions, setAnsweredQuestions] = useState(0);
   let userInput = document.getElementById("answer");
+  const correctAnswer = document.getElementById("correctAnswer");
 
   const usersQuestionData = useSelector((state) => state.questionsList);
-  const {
-    questions13,
-    category12,
-  } = usersQuestionData;
+  const { questions13, category12 } = usersQuestionData;
   useEffect(() => {
     dispatch(getQuestions());
   }, [dispatch]);
@@ -48,7 +46,7 @@ const Questions3 = (props) => {
   const checkRoundTime = () => {
     if (roundTime < 1) {
       //TODO REMAP TO 3RD ROUND
-      history.push('/results/3');
+      history.push("/results/3");
     }
   };
 
@@ -82,7 +80,6 @@ const Questions3 = (props) => {
     }
   };
 
-
   const checkAnswer = () => {
     if (answerText === userInput.innerText) {
       setScore(wager + score);
@@ -108,7 +105,7 @@ const Questions3 = (props) => {
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
       //TODO REMAP TO 3RD ROUND
-      history.push('/results/3');
+      history.push("/results/3");
     }
     return;
   };
@@ -138,22 +135,21 @@ const Questions3 = (props) => {
   };
 
   //When the modal closes
-  const handleClose = () => {
+  const handleClose = (event) => {
+    console.log(correctAnswer);
+    event.target.disabled = true;
     setHasAnswered(!hasAnswered);
     resetTimer();
     checkNumberAnsweredQuestions();
     setOpen(false);
+    correctAnswer.classList.remove("hide");
   };
 
   return category12 !== "" ? (
     <>
       <div id="jeopardy-board">
         <div className="final-jeopardy">
-          <WagerModal
-            open={wagerModalOpen}
-            onClose={handleWagerClose}
-          />
-
+          <WagerModal open={wagerModalOpen} onClose={handleWagerClose} />
 
           <Modal
             open={open}
@@ -163,8 +159,8 @@ const Questions3 = (props) => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-          // onBackdropClick={onBackdropClick}
-          // onEscapeKeyDown={onEscapeKeyDown}
+            // onBackdropClick={onBackdropClick}
+            // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <div className="question">
@@ -185,19 +181,25 @@ const Questions3 = (props) => {
               </button>
             ))}
           </div>
-
         </div>
         <h2 className="scoreboard">
-          <div>Your Wager: <span id="wager">{wager}</span></div>
-          <div>Your Answer: <span id="answer">{userAnswer}</span></div>
+          <div>
+            Your Wager: <span id="wager">{wager}</span>
+          </div>
+          <div>
+            Your Answer: <span id="answer">{userAnswer}</span>
+            <div id="correctAnswer" className="hide">
+              The correct answer was: {answerText}
+            </div>
+          </div>
           <br />
-        Score: {`${score}`}
+          Score: {`${score}`}
         </h2>
       </div>
     </>
   ) : (
-      <tr>Loading...</tr>
-    );
+    <tr>Loading...</tr>
+  );
 };
 
 export default Questions3;
