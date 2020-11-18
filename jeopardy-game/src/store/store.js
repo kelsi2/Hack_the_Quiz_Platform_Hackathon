@@ -4,7 +4,6 @@ import {composeWithDevTools} from "redux-devtools-extension";
 
 import rootReducer from "./reducers";
 import getQuestions from "./getQuestions";
-// import getScore from "./getScore";
 
 const initalState = {};
 

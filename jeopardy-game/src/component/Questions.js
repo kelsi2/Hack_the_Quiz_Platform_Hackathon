@@ -1,12 +1,11 @@
 import React, {useEffect, useState, useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getQuestions} from "../store/actions/questionsActions";
-// import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import {AppContext, AnswerContext} from "../App";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-const Questions = (props) => {
+const Questions = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -91,6 +90,8 @@ const Questions = (props) => {
   };
 
   const checkAnswer = () => {
+    console.log(answerText);
+    console.log(userInput.innerText);
     if (answerText === userInput.innerText) {
       setScore(qpoints + score);
       setCorrect("+");
@@ -110,7 +111,6 @@ const Questions = (props) => {
       resetAnswer();
     }
   }, [hasAnswered]);
-  // console.log("UsersAnswer:", userAnswer);
 
   const resetAnswer = () => {
     setHasAnswered(false);
@@ -160,8 +160,6 @@ const Questions = (props) => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-          // onBackdropClick={onBackdropClick}
-          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <td>

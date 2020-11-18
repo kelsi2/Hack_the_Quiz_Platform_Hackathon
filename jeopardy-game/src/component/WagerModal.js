@@ -1,9 +1,8 @@
-import React, {useState, useContext, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import {Modal, Backdrop, makeStyles, TextField} from "@material-ui/core";
 import {useSpring, animated} from "react-spring/web.cjs";
-import {AnswerContext, WagerContext} from "../App";
+import {WagerContext} from "../App";
 import theme from "../mui";
 
 const useStyles = makeStyles(() => ({
@@ -55,19 +54,10 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 export default function SpringModal(props) {
-  // const [answer, setAnswer] = useState("");
-  // const [wager, setWager] = useState(0);
-  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
   const {wager, setWager} = useContext(WagerContext);
-  // const [time, setTime] = useContext(TimeContext);
-  // const [score, setScore] = useContext(AppContext);
   const classes = useStyles();
   const handleSubmit = (event) => {
-    // console.log(event.target);
     event.preventDefault();
-    // setUserAnswer(answer);
-    // console.log(userAnswer);
-    // console.log("handleSubmit answer " + userAnswer);
   };
   const handleChange = (event) => {
     const eventValue = event.target.value;
@@ -91,7 +81,6 @@ export default function SpringModal(props) {
         <Fade in={props.open} onClose={props.handleClose}>
           <div className={classes.paper}>
             <h2 id="spring-modal-title">Final Jeopardy</h2>
-            {/* <h2 id="timer">{`${props.timer}`}</h2> */}
             <p id="spring-modal-description">Enter your wager</p>
             <form
               onSubmit={handleSubmit}

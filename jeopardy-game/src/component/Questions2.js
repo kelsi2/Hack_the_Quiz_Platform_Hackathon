@@ -54,7 +54,6 @@ const Questions2 = () => {
   //checkRoundTimer
   const checkRoundTime = () => {
     if (roundTime < 1) {
-      //TODO REMAP TO 3RD ROUND
       history.push("/results/2");
     }
   };
@@ -90,6 +89,8 @@ const Questions2 = () => {
   };
 
   const checkAnswer = () => {
+    console.log(answerText);
+    console.log(userInput.innerText);
     if (answerText === userInput.innerText) {
       setScore(qpoints + score);
     }
@@ -115,7 +116,6 @@ const Questions2 = () => {
 
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
-      //TODO REMAP TO 3RD ROUND
       history.push("/results/2");
     }
     return;
@@ -157,8 +157,6 @@ const Questions2 = () => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-          // onBackdropClick={onBackdropClick}
-          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <td>

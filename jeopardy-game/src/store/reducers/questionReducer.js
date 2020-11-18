@@ -29,7 +29,7 @@ const initialState = {
   loading: true,
 };
 
-export default function(state = initialState, action) {
+const questionReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_QUESTIONS:
       return {
@@ -48,7 +48,6 @@ export default function(state = initialState, action) {
         category11: action.payload[11],
         category12: action.payload[12],
 
-        // questions 1 does not exist
         questions: action.payload[0],
         questions2: action.payload[1],
         questions3: action.payload[2],
@@ -67,4 +66,6 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-}
+};
+
+export default questionReducer;

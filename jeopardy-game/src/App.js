@@ -11,7 +11,6 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 export const AppContext = createContext([{}, () => { }]);
 export const AnswerContext = createContext([{}, () => { }]);
 export const WagerContext = createContext([{}, () => { }]);
-// export const TimerContext = createContext([{}, () => {}]);
 
 function App() {
   const [score, setScore] = useState(0);

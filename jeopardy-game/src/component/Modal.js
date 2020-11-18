@@ -4,7 +4,6 @@ import {Modal, Backdrop, makeStyles, TextField} from "@material-ui/core";
 import {useSpring, animated} from "react-spring/web.cjs";
 import {AnswerContext} from "../App";
 import theme from "../mui";
-import "../modal.css";
 
 const useStyles = makeStyles(() => ({
   modal: {

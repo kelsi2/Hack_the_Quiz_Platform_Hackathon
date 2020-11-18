@@ -71,23 +71,6 @@ table button {
   text-align: center;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.submit-button {
-  font-size: 150%;
-  font-weight: bold;
-  background-color: #4834d4;
-  background-image: linear-gradient(315deg, #4834d4 0%, #0c0c0c 74%);
-  color: white;
-  border: none;
-  padding: 1.2rem;
-  margin: 0.5rem;
-  text-decoration: none;
-}
-
 button:disabled {
   background: #ccc;
   color: #dddddd;
