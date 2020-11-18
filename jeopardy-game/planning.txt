@@ -6,14 +6,9 @@ Core Requirements
 TODOS
 /////////////////
 
-FINAL ROUND
-As a user, at the start of the third round I am given a question and asked to wager from my earned points 
 
-As a user, if I answer the third round question correctly I gain the value of my wager
 
-As a user, if I answer the third round question incorrectly I lose the value of my wager
-
-As a user, after the third round I am shown my score and asked if I want to play again
+As a user, after the third round I am shown my score and asked if I want to play again TODO
 RESULTS SCREEN
 
 DONE
@@ -43,3 +38,10 @@ As a user, at the start of the 2nd round the game board is refilled and I contin
 200, 400, 600, 800, 1000
 
 As a user, After a unseen period of time the game will start the next round X
+
+FINAL ROUND
+As a user, at the start of the third round I am given a question and asked to wager from my earned points X
+
+As a user, if I answer the third round question correctly I gain the value of my wager X
+
+As a user, if I answer the third round question incorrectly I lose the value of my wager X

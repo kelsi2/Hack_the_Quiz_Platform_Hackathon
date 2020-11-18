@@ -4,6 +4,7 @@ import Questions2 from "./component/Questions2";
 import Questions3 from "./component/Questions3";
 import Results1 from "./component/Results1";
 import Results2 from "./component/Results2";
+import Results3 from "./component/Results3";
 import Home from "./component/Home";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -28,6 +29,7 @@ function App() {
               <Route path="/questions/3" component={Questions3} />
               <Route path="/results/1" component={Results1} />
               <Route path="/results/2" component={Results2} />
+              <Route path="/results/3" component={Results3} />
             </Switch>
           </WagerContext.Provider>
         </AnswerContext.Provider>
