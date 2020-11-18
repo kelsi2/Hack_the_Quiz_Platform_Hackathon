@@ -120,7 +120,7 @@ const Questions3 = (props) => {
     setQuestionText(questions13.clues[3].question);
     setCategoryText(category12.title);
     setQPoints(wager);
-    setAnswerText(questions13.clues[3].answer);
+    setAnswerText(questions13.clues[3].answer.replace(/<[^>]+>/g, ""));
     console.log(answerText);
     setOpen(true);
   };

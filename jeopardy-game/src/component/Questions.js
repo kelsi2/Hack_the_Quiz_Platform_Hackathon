@@ -130,7 +130,7 @@ const Questions = (props) => {
     setQuestionText(event.target.attributes[2].nodeValue);
     setCategoryText(event.target.attributes[4].nodeValue);
     setQPoints(parseInt(event.target.attributes[3].nodeValue));
-    setAnswerText(event.target.attributes[5].nodeValue);
+    setAnswerText(event.target.attributes[5].nodeValue.replace(/<[^>]+>/g, ""));
     console.log(answerText);
     setOpen(true);
   };
