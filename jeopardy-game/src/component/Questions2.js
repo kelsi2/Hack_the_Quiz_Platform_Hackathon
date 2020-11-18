@@ -278,7 +278,7 @@ const Questions2 = (props) => {
           </td>
         </table>
         <h2 className="scoreboard title">
-          Your Answer: <span id="answer">{userAnswer}</span>
+          Your Answer: <span id="answer">What is {userAnswer}?</span>
           <div id="correctAnswer" className="hide">
             The correct answer was: {answerText}
           </div>

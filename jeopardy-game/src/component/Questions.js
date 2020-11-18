@@ -20,6 +20,7 @@ const Questions = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [roundTime, setRoundTime] = useState(1000);
+  const [correct, setCorrect] = useState("");
   const [answeredQuetions, setAnsweredQuestions] = useState(0);
   let userInput = document.getElementById("answer");
   const correctAnswer = document.getElementById("correctAnswer");
@@ -92,9 +93,11 @@ const Questions = (props) => {
   const checkAnswer = () => {
     if (answerText === userInput.innerText) {
       setScore(qpoints + score);
+      setCorrect("+");
     }
     if (answerText !== userInput.innerText && userInput.innerText !== "") {
       setScore(score - qpoints);
+      setCorrect("-");
     }
     if (userInput.innerText === "") {
       return;
@@ -276,12 +279,16 @@ const Questions = (props) => {
           </td>
         </table>
         <h2 className="scoreboard">
-          Your Answer: <span id="answer">{userAnswer}</span>
+          Your Answer: <span id="answer">What is {userAnswer}?</span>
           <div id="correctAnswer" className="hide">
             The correct answer was: {answerText}
           </div>
           <br />
           Score: {`${score}`}
+          {/* <span
+            id="wonpoints"
+            className="wonpoints"
+          >{`${correct} + " " + ${qpoints}`}</span> */}
         </h2>
       </div>
     </>
