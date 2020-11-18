@@ -164,7 +164,7 @@ const Questions2 = (props) => {
           />
 
           <td>
-            <th className="question">{`${category6.title}`}</th>
+            <th className="question title">{`${category6.title}`}</th>
             {questions7.clues.slice(4, 9).map((q) => (
               <tr className="question">
                 <button
@@ -183,7 +183,7 @@ const Questions2 = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category7.title}`}</th>
+            <th className="question title">{`${category7.title}`}</th>
             {questions8.clues.slice(14, 19).map((q) => (
               <tr className="question">
                 <button
@@ -202,7 +202,7 @@ const Questions2 = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category8.title}`}</th>
+            <th className="question title">{`${category8.title}`}</th>
             {questions9.clues.slice(30, 35).map((q) => (
               <tr className="question">
                 <button
@@ -221,7 +221,7 @@ const Questions2 = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category9.title}`}</th>
+            <th className="question title">{`${category9.title}`}</th>
             {questions10.clues.slice(5, 10).map((q) => (
               <tr className="question">
                 <button
@@ -240,7 +240,7 @@ const Questions2 = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category10.title}`}</th>
+            <th className="question title">{`${category10.title}`}</th>
             {questions11.clues.slice(10, 15).map((q) => (
               <tr className="question">
                 <button
@@ -259,7 +259,7 @@ const Questions2 = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category11.title}`}</th>
+            <th className="question title">{`${category11.title}`}</th>
             {questions12.clues.slice(5, 10).map((q) => (
               <tr className="question">
                 <button
@@ -277,7 +277,7 @@ const Questions2 = (props) => {
             ))}
           </td>
         </table>
-        <h2 className="scoreboard">
+        <h2 className="scoreboard title">
           Your Answer: <span id="answer">{userAnswer}</span>
           <div id="correctAnswer" className="hide">
             The correct answer was: {answerText}

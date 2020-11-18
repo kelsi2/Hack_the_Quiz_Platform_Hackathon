@@ -162,7 +162,7 @@ const Questions = (props) => {
           />
 
           <td>
-            <th className="question">{`${category.title}`}</th>
+            <th className="question title">{`${category.title}`}</th>
             {questions.clues.slice(0, 5).map((q) => (
               <tr className="question">
                 <button
@@ -181,7 +181,7 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category1.title}`}</th>
+            <th className="question title">{`${category1.title}`}</th>
             {questions2.clues.slice(0, 5).map((q) => (
               <tr className="question">
                 <button
@@ -200,7 +200,7 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category2.title}`}</th>
+            <th className="question title">{`${category2.title}`}</th>
             {questions3.clues.slice(0, 5).map((q) => (
               <tr className="question">
                 <button
@@ -219,7 +219,7 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category3.title}`}</th>
+            <th className="question title">{`${category3.title}`}</th>
             {questions4.clues.slice(0, 5).map((q) => (
               <tr className="question">
                 <button
@@ -238,7 +238,7 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category4.title}`}</th>
+            <th className="question title">{`${category4.title}`}</th>
             {questions5.clues.slice(0, 5).map((q) => (
               <tr className="question">
                 <button
@@ -257,7 +257,7 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category5.title}`}</th>
+            <th className="question title">{`${category5.title}`}</th>
             {questions6.clues.slice(9, 14).map((q) => (
               <tr className="question">
                 <button

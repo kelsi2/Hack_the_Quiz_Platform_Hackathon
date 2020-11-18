@@ -166,7 +166,7 @@ const Questions3 = (props) => {
             // onEscapeKeyDown={onEscapeKeyDown}
           />
 
-          <div className="question">
+          <div className="question title">
             <h2>{`${category12.title}`}</h2>
             {questions13.clues.slice(3, 4).map((q) => (
               <button

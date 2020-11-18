@@ -160,3 +160,7 @@ h3 {
 .hide {
   display: none;
 }
+
+.title {
+  text-transform: capitalize;
+}
