@@ -4,7 +4,7 @@ import {getQuestions} from "../store/actions/questionsActions";
 // import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import WagerModal from "./WagerModal";
-import {AppContext, AnswerContext} from "../App";
+import {AppContext, AnswerContext, WagerContext} from "../App";
 import {Link, useHistory} from "react-router-dom";
 
 const Questions3 = (props) => {
@@ -18,7 +18,7 @@ const Questions3 = (props) => {
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
   const {userAnswer, setUserAnswer} = useContext(AnswerContext);
-  const [wager, setWager] = useState(0);
+  const {wager, setWager} = useContext(WagerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -132,6 +132,12 @@ const Questions3 = (props) => {
     setOpen(true);
   };
 
+  //seperate close function for wager modal
+  const handleWagerClose = () => {
+    setWagerModalOpen(false);
+    //maybe put some more logic in here to make the question pop up
+  };
+
   //When the modal closes
   const handleClose = () => {
     setHasAnswered(!hasAnswered);
@@ -142,11 +148,11 @@ const Questions3 = (props) => {
 
   return category12 !== "" ? (
     <>
-      <h1>Jeopardy</h1>
       <div id="jeopardy-board">
         <table>
           <WagerModal
             open={wagerModalOpen}
+            onClose={handleWagerClose}
           />
 
 

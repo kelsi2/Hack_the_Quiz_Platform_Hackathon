@@ -20,7 +20,7 @@ function App() {
     <Router>
       <AppContext.Provider value={[score, setScore]}>
         <AnswerContext.Provider value={{userAnswer, setUserAnswer}}>
-          <WagerContext.Provider value={[wager, setWager]}>
+          <WagerContext.Provider value={{wager, setWager}}>
             <Switch className="App">
               <Route exact path="/" component={Home} />
               <Route path="/questions/1" component={Questions} />

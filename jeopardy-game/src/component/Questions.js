@@ -149,7 +149,6 @@ const Questions = (props) => {
 
   return category !== "" ? (
     <>
-      <h1>Jeopardy</h1>
       <div id="jeopardy-board">
         <table>
           <Modal

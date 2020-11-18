@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import PropTypes from "prop-types";
 import {Modal, Backdrop, makeStyles, TextField} from "@material-ui/core";
 import {useSpring, animated} from "react-spring/web.cjs";
-import {AnswerContext} from "../App";
+import {AnswerContext, WagerContext} from "../App";
 import theme from "../mui";
 
 const useStyles = makeStyles(() => ({
@@ -55,8 +55,10 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 export default function SpringModal(props) {
-  const [answer, setAnswer] = useState("");
+  // const [answer, setAnswer] = useState("");
+  // const [wager, setWager] = useState(0);
   const {userAnswer, setUserAnswer} = useContext(AnswerContext);
+  const {wager, setWager} = useContext(WagerContext);
   // const [time, setTime] = useContext(TimeContext);
   // const [score, setScore] = useContext(AppContext);
   const classes = useStyles();
@@ -69,7 +71,7 @@ export default function SpringModal(props) {
   };
   const handleChange = (event) => {
     const eventValue = event.target.value;
-    setUserAnswer(eventValue);
+    setWager(eventValue);
   };
   return (
     <div>
@@ -99,7 +101,7 @@ export default function SpringModal(props) {
             >
               <TextField
                 onChange={handleChange}
-                value={userAnswer}
+                value={wager}
                 type="number"
                 name="answer-field"
                 id="outlined-basic"

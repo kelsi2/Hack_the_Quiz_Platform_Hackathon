@@ -10,7 +10,13 @@ html, body {
 }
 
 #root {
-  height: 100%
+  height: 100%;
+  background-image: url("https://www.jeopardy.com/sites/default/files/styles/article_image_gallery/public/2020-09/3_s37_logo.jpg?itok=-5t1bEhp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: auto
 }
 
 code {
@@ -24,19 +30,20 @@ table {
 }
 
 #jeopardy-board {
-  position: absolute;
+  /* position: absolute; */
   width: auto;
-  background: #0015a0;
   color: #ffffff;
   font-family: 'Fjalla One', sans-serif;
   text-shadow: 4px 4px #000000;
+  padding-top: 6em;
+  
 }
 
 table button {
   color: #efaa50;
   font-size: 600%;
   background-color: #0015a0;
-  width: auto;
+  width: 100%;
 }
 
 .question {
@@ -110,6 +117,10 @@ button:disabled {
   padding: 50px;
   border: 2px solid #000;
   text-align: center
+}
+
+h1 {
+  margin-top: 0
 }
 
 h3 {
