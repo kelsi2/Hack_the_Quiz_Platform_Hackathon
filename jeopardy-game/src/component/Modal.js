@@ -5,6 +5,7 @@ import { Modal, Backdrop, makeStyles, TextField } from "@material-ui/core";
 import { useSpring, animated } from "react-spring/web.cjs";
 import { AnswerContext } from "../App";
 import theme from "../mui";
+import "../modal.css";
 
 const useStyles = makeStyles(() => ({
   modal: {
@@ -88,7 +89,10 @@ export default function SpringModal(props) {
       >
         <Fade in={props.open} onClose={props.handleClose}>
           <div className={classes.paper}>
-            <h2 id="spring-modal-title">{`${props.category}`}</h2>
+            <h2
+              id="spring-modal-title"
+              className="title"
+            >{`${props.category}`}</h2>
             <h2 id="timer">{`${props.timer}`}</h2>
             <p id="spring-modal-description">{`${props.questionText}`}</p>
             <form
