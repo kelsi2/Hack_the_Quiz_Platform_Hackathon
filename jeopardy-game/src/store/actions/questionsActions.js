@@ -2,23 +2,23 @@ import {GET_QUESTIONS, QUESTIONS_ERROR} from "../getQuestions";
 import axios from "axios";
 
 // ROUND ONE
-const requestOne = axios.get("http://jservice.io/api/category?id=117");
-const requestTwo = axios.get("http://jservice.io/api/category?id=26");
-const requestThree = axios.get("http://jservice.io/api/category?id=217");
-const requestFour = axios.get("http://jservice.io/api/category?id=400");
-const requestFive = axios.get("http://jservice.io/api/category?id=780");
-const requestSix = axios.get("http://jservice.io/api/category?id=65");
+const requestOne = axios.get("https://jservice.io/api/category?id=117");
+const requestTwo = axios.get("https://jservice.io/api/category?id=26");
+const requestThree = axios.get("https://jservice.io/api/category?id=217");
+const requestFour = axios.get("https://jservice.io/api/category?id=400");
+const requestFive = axios.get("https://jservice.io/api/category?id=780");
+const requestSix = axios.get("https://jservice.io/api/category?id=65");
 
 // ROUND TWO
-const requestSeven = axios.get("http://jservice.io/api/category?id=1");
-const requestEight = axios.get("http://jservice.io/api/category?id=5");
-const requestNine = axios.get("http://jservice.io/api/category?id=625");
-const requestTen = axios.get("http://jservice.io/api/category?id=1013");
-const requestEleven = axios.get("http://jservice.io/api/category?id=2658");
-const requestTwelve = axios.get("http://jservice.io/api/category?id=3591");
+const requestSeven = axios.get("https://jservice.io/api/category?id=1");
+const requestEight = axios.get("https://jservice.io/api/category?id=5");
+const requestNine = axios.get("https://jservice.io/api/category?id=625");
+const requestTen = axios.get("https://jservice.io/api/category?id=1013");
+const requestEleven = axios.get("https://jservice.io/api/category?id=2658");
+const requestTwelve = axios.get("https://jservice.io/api/category?id=3591");
 
 //ROUND THREE
-const requestThirteen = axios.get("http://jservice.io/api/category?id=256");
+const requestThirteen = axios.get("https://jservice.io/api/category?id=256");
 
 export const getQuestions = () => async (dispatch) => {
   try {
