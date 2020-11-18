@@ -82,10 +82,10 @@ const Questions3 = (props) => {
 
   const checkAnswer = () => {
     if (answerText === userInput.innerText) {
-      setScore(wager + score);
+      setScore(score + parseInt(wager));
     }
     if (answerText !== userInput.innerText && userInput.innerText !== "") {
-      setScore(score - wager);
+      setScore(score - parseInt(wager));
     }
   };
 
@@ -143,6 +143,9 @@ const Questions3 = (props) => {
     checkNumberAnsweredQuestions();
     setOpen(false);
     correctAnswer.classList.remove("hide");
+    setTimeout(() => {
+      history.push("/results/3");
+    }, 5000);
   };
 
   return category12 !== "" ? (
