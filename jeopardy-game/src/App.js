@@ -1,5 +1,6 @@
 import React, {createContext, useState} from "react";
 import Questions from "./component/Questions";
+import Questions2 from "./component/Questions2";
 import Home from "./component/Home";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -18,7 +19,8 @@ function App() {
         <AnswerContext.Provider value={{userAnswer, setUserAnswer}}>
           <Switch className="App">
             <Route exact path="/" component={Home} />
-            <Route path="/questions/:round" component={Questions} />
+            <Route path="/questions/1" component={Questions} />
+            <Route path="/questions/2" component={Questions2} />
             {/* <Route path="/results" component={Results} /> */}
           </Switch>
         </AnswerContext.Provider>

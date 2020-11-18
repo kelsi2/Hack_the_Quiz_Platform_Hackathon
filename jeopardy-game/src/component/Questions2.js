@@ -6,7 +6,7 @@ import Modal from "./Modal";
 import {AppContext, AnswerContext} from "../App";
 import {Link, useHistory} from "react-router-dom";
 
-const Questions = (props) => {
+const Questions2 = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -25,18 +25,18 @@ const Questions = (props) => {
 
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
-    questions,
-    questions2,
-    questions3,
-    questions4,
-    questions5,
-    questions6,
-    category,
-    category1,
-    category2,
-    category3,
-    category4,
-    category5,
+    questions7,
+    questions8,
+    questions9,
+    questions10,
+    questions11,
+    questions12,
+    category6,
+    category7,
+    category8,
+    category9,
+    category10,
+    category11,
   } = usersQuestionData;
   useEffect(() => {
     dispatch(getQuestions());
@@ -59,8 +59,6 @@ const Questions = (props) => {
       history.push('/questions/2/');
     }
   };
-
-
 
   //useEffect that makes the timer tick
   useEffect(() => {
@@ -147,7 +145,7 @@ const Questions = (props) => {
     setOpen(false);
   };
 
-  return category !== "" ? (
+  return category6 !== "" ? (
     <>
       <h1>Jeopardy</h1>
       <div id="jeopardy-board">
@@ -165,8 +163,8 @@ const Questions = (props) => {
           />
 
           <td>
-            <th className="question">{`${category.title}`}</th>
-            {questions.clues.slice(0, 5).map((q) => (
+            <th className="question">{`${category6.title}`}</th>
+            {questions7.clues.slice(4, 9).map((q) => (
               <tr className="question">
                 <button
                   type="button"
@@ -174,7 +172,7 @@ const Questions = (props) => {
                   id={q.id}
                   qtext={q.question}
                   qPoints={q.value}
-                  qcategory={category.title}
+                  qcategory={category6.title}
                   qanswer={q.answer}
                 >
                   {q.value}
@@ -184,8 +182,8 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category1.title}`}</th>
-            {questions2.clues.slice(0, 5).map((q) => (
+            <th className="question">{`${category7.title}`}</th>
+            {questions8.clues.slice(14, 19).map((q) => (
               <tr className="question">
                 <button
                   type="button"
@@ -193,7 +191,7 @@ const Questions = (props) => {
                   id={q.id}
                   qtext={q.question}
                   qPoints={q.value}
-                  qcategory={category1.title}
+                  qcategory={category7.title}
                   qanswer={q.answer}
                 >
                   {q.value}
@@ -203,8 +201,8 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category2.title}`}</th>
-            {questions3.clues.slice(0, 5).map((q) => (
+            <th className="question">{`${category8.title}`}</th>
+            {questions9.clues.slice(30, 35).map((q) => (
               <tr className="question">
                 <button
                   type="button"
@@ -212,7 +210,7 @@ const Questions = (props) => {
                   id={q.id}
                   qtext={q.question}
                   qPoints={q.value}
-                  qcategory={category2.title}
+                  qcategory={category8.title}
                   qanswer={q.answer}
                 >
                   {q.value}
@@ -222,8 +220,8 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category3.title}`}</th>
-            {questions4.clues.slice(0, 5).map((q) => (
+            <th className="question">{`${category9.title}`}</th>
+            {questions10.clues.slice(5, 10).map((q) => (
               <tr className="question">
                 <button
                   type="button"
@@ -231,7 +229,7 @@ const Questions = (props) => {
                   id={q.id}
                   qtext={q.question}
                   qPoints={q.value}
-                  qcategory={category3.title}
+                  qcategory={category9.title}
                   qanswer={q.answer}
                 >
                   {q.value}
@@ -241,8 +239,8 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category4.title}`}</th>
-            {questions5.clues.slice(0, 5).map((q) => (
+            <th className="question">{`${category10.title}`}</th>
+            {questions11.clues.slice(10, 15).map((q) => (
               <tr className="question">
                 <button
                   type="button"
@@ -250,7 +248,7 @@ const Questions = (props) => {
                   id={q.id}
                   qtext={q.question}
                   qPoints={q.value}
-                  qcategory={category4.title}
+                  qcategory={category10.title}
                   qanswer={q.answer}
                 >
                   {q.value}
@@ -260,8 +258,8 @@ const Questions = (props) => {
           </td>
 
           <td>
-            <th className="question">{`${category5.title}`}</th>
-            {questions6.clues.slice(9, 14).map((q) => (
+            <th className="question">{`${category11.title}`}</th>
+            {questions12.clues.slice(5, 10).map((q) => (
               <tr className="question">
                 <button
                   type="button"
@@ -269,7 +267,7 @@ const Questions = (props) => {
                   id={q.id}
                   qtext={q.question}
                   qPoints={q.value}
-                  qcategory={category5.title}
+                  qcategory={category11.title}
                   qanswer={q.answer}
                 >
                   {q.value}
@@ -290,4 +288,4 @@ const Questions = (props) => {
     );
 };
 
-export default Questions;
+export default Questions2;
