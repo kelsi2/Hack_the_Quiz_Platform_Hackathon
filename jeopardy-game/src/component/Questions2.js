@@ -57,7 +57,7 @@ const Questions2 = (props) => {
   const checkRoundTime = () => {
     if (roundTime < 1) {
       //TODO REMAP TO 3RD ROUND
-      history.push('/questions/2/');
+      history.push('/results');
     }
   };
 
@@ -120,7 +120,7 @@ const Questions2 = (props) => {
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
       //TODO REMAP TO 3RD ROUND
-      history.push('/questions/2/');
+      history.push('/results');
     }
     return;
   };

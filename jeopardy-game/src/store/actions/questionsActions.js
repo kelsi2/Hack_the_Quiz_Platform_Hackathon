@@ -17,6 +17,9 @@ const requestTen = axios.get("http://jservice.io/api/category?id=1013");
 const requestEleven = axios.get("http://jservice.io/api/category?id=2658");
 const requestTwelve = axios.get("http://jservice.io/api/category?id=3591");
 
+//ROUND THREE
+const requestThirteen = axios.get("http://jservice.io/api/category?id=256");
+
 export const getQuestions = () => async (dispatch) => {
   try {
     let promiseArray = [];
@@ -36,6 +39,9 @@ export const getQuestions = () => async (dispatch) => {
     promiseArray.push(requestTen);
     promiseArray.push(requestEleven);
     promiseArray.push(requestTwelve);
+
+    //ROUND THREE
+    promiseArray.push(requestThirteen);
 
     const responses = await Promise.all(promiseArray);
     const responseData = responses.map((response) => response.data);

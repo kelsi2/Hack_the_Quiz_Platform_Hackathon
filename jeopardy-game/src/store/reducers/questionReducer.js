@@ -12,6 +12,7 @@ const initialState = {
   category9: "",
   category10: "",
   category11: "",
+  category12: "",
   questions: [],
   questions2: [],
   questions3: [],
@@ -24,6 +25,7 @@ const initialState = {
   questions10: [],
   questions11: [],
   questions12: [],
+  questions13: [],
   loading: true,
 };
 
@@ -44,6 +46,7 @@ export default function(state = initialState, action) {
         category9: action.payload[9],
         category10: action.payload[10],
         category11: action.payload[11],
+        category12: action.payload[12],
 
         // questions 1 does not exist
         questions: action.payload[0],
@@ -58,6 +61,7 @@ export default function(state = initialState, action) {
         questions10: action.payload[9],
         questions11: action.payload[10],
         questions12: action.payload[11],
+        questions13: action.payload[12],
         loading: false,
       };
     default:

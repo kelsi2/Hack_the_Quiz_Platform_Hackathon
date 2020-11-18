@@ -3,19 +3,22 @@ import {useDispatch, useSelector} from "react-redux";
 import {getQuestions} from "../store/actions/questionsActions";
 // import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
+import WagerModal from "./WagerModal";
 import {AppContext, AnswerContext} from "../App";
 import {Link, useHistory} from "react-router-dom";
 
-const Questions = (props) => {
+const Questions3 = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
+  const [wagerModalOpen, setWagerModalOpen] = useState(true);
   const [questionText, setQuestionText] = useState("");
   const [categoryText, setCategoryText] = useState("");
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
   const {userAnswer, setUserAnswer} = useContext(AnswerContext);
+  const [wager, setWager] = useState(0);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -25,18 +28,8 @@ const Questions = (props) => {
 
   const usersQuestionData = useSelector((state) => state.questionsList);
   const {
-    questions,
-    questions2,
-    questions3,
-    questions4,
-    questions5,
-    questions6,
-    category,
-    category1,
-    category2,
-    category3,
-    category4,
-    category5,
+    questions13,
+    category12,
   } = usersQuestionData;
   useEffect(() => {
     dispatch(getQuestions());
@@ -56,11 +49,10 @@ const Questions = (props) => {
   //checkRoundTimer
   const checkRoundTime = () => {
     if (roundTime < 1) {
-      history.push('/results/1');
+      //TODO REMAP TO 3RD ROUND
+      history.push('/results');
     }
   };
-
-
 
   //useEffect that makes the timer tick
   useEffect(() => {
@@ -120,7 +112,8 @@ const Questions = (props) => {
 
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
-      history.push('/results/1');
+      //TODO REMAP TO 3RD ROUND
+      history.push('/results');
     }
     return;
   };
@@ -147,11 +140,16 @@ const Questions = (props) => {
     setOpen(false);
   };
 
-  return category !== "" ? (
+  return category12 !== "" ? (
     <>
       <h1>Jeopardy</h1>
       <div id="jeopardy-board">
         <table>
+          <WagerModal
+            open={wagerModalOpen}
+          />
+
+
           <Modal
             open={open}
             onClose={handleClose}
@@ -165,8 +163,8 @@ const Questions = (props) => {
           />
 
           <td>
-            <th className="question">{`${category.title}`}</th>
-            {questions.clues.slice(0, 5).map((q) => (
+            <th className="question">{`${category12.title}`}</th>
+            {questions13.clues.slice(3, 4).map((q) => (
               <tr className="question">
                 <button
                   type="button"
@@ -174,7 +172,7 @@ const Questions = (props) => {
                   id={q.id}
                   qtext={q.question}
                   qPoints={q.value}
-                  qcategory={category.title}
+                  qcategory={category12.title}
                   qanswer={q.answer}
                 >
                   {q.value}
@@ -183,102 +181,10 @@ const Questions = (props) => {
             ))}
           </td>
 
-          <td>
-            <th className="question">{`${category1.title}`}</th>
-            {questions2.clues.slice(0, 5).map((q) => (
-              <tr className="question">
-                <button
-                  type="button"
-                  onClick={toggleModal}
-                  id={q.id}
-                  qtext={q.question}
-                  qPoints={q.value}
-                  qcategory={category1.title}
-                  qanswer={q.answer}
-                >
-                  {q.value}
-                </button>
-              </tr>
-            ))}
-          </td>
 
-          <td>
-            <th className="question">{`${category2.title}`}</th>
-            {questions3.clues.slice(0, 5).map((q) => (
-              <tr className="question">
-                <button
-                  type="button"
-                  onClick={toggleModal}
-                  id={q.id}
-                  qtext={q.question}
-                  qPoints={q.value}
-                  qcategory={category2.title}
-                  qanswer={q.answer}
-                >
-                  {q.value}
-                </button>
-              </tr>
-            ))}
-          </td>
-
-          <td>
-            <th className="question">{`${category3.title}`}</th>
-            {questions4.clues.slice(0, 5).map((q) => (
-              <tr className="question">
-                <button
-                  type="button"
-                  onClick={toggleModal}
-                  id={q.id}
-                  qtext={q.question}
-                  qPoints={q.value}
-                  qcategory={category3.title}
-                  qanswer={q.answer}
-                >
-                  {q.value}
-                </button>
-              </tr>
-            ))}
-          </td>
-
-          <td>
-            <th className="question">{`${category4.title}`}</th>
-            {questions5.clues.slice(0, 5).map((q) => (
-              <tr className="question">
-                <button
-                  type="button"
-                  onClick={toggleModal}
-                  id={q.id}
-                  qtext={q.question}
-                  qPoints={q.value}
-                  qcategory={category4.title}
-                  qanswer={q.answer}
-                >
-                  {q.value}
-                </button>
-              </tr>
-            ))}
-          </td>
-
-          <td>
-            <th className="question">{`${category5.title}`}</th>
-            {questions6.clues.slice(9, 14).map((q) => (
-              <tr className="question">
-                <button
-                  type="button"
-                  onClick={toggleModal}
-                  id={q.id}
-                  qtext={q.question}
-                  qPoints={q.value}
-                  qcategory={category5.title}
-                  qanswer={q.answer}
-                >
-                  {q.value}
-                </button>
-              </tr>
-            ))}
-          </td>
         </table>
         <h2 className="scoreboard">
+          Your Wager: <span id="wager">{wager}</span>
           Your Answer: <span id="answer">{userAnswer}</span>
           <br />
         Score: {`${score}`}
@@ -290,4 +196,4 @@ const Questions = (props) => {
     );
 };
 
-export default Questions;
+export default Questions3;
