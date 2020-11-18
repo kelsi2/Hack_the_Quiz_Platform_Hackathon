@@ -1,11 +1,12 @@
 import React, {useEffect, useState, useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getQuestions} from "../store/actions/questionsActions";
+// import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import {AppContext, AnswerContext} from "../App";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
-const Questions2 = () => {
+const Questions2 = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -54,6 +55,7 @@ const Questions2 = () => {
   //checkRoundTimer
   const checkRoundTime = () => {
     if (roundTime < 1) {
+      //TODO REMAP TO 3RD ROUND
       history.push("/results/2");
     }
   };
@@ -108,6 +110,7 @@ const Questions2 = () => {
       resetAnswer();
     }
   }, [hasAnswered]);
+  // console.log("UsersAnswer:", userAnswer);
 
   const resetAnswer = () => {
     setHasAnswered(false);
@@ -116,6 +119,7 @@ const Questions2 = () => {
 
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
+      //TODO REMAP TO 3RD ROUND
       history.push("/results/2");
     }
     return;
@@ -157,6 +161,8 @@ const Questions2 = () => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
+          // onBackdropClick={onBackdropClick}
+          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <td>

@@ -1,12 +1,13 @@
 import React, {useEffect, useState, useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getQuestions} from "../store/actions/questionsActions";
+// import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import WagerModal from "./WagerModal";
 import {AppContext, AnswerContext, WagerContext} from "../App";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
-const Questions3 = () => {
+const Questions3 = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -44,6 +45,7 @@ const Questions3 = () => {
   //checkRoundTimer
   const checkRoundTime = () => {
     if (roundTime < 1) {
+      //TODO REMAP TO 3RD ROUND
       history.push("/results/3");
     }
   };
@@ -79,8 +81,6 @@ const Questions3 = () => {
   };
 
   const checkAnswer = () => {
-    console.log(answerText);
-    console.log(userInput.innerText);
     if (answerText === userInput.innerText) {
       setScore(score + parseInt(wager));
     }
@@ -95,6 +95,7 @@ const Questions3 = () => {
       resetAnswer();
     }
   }, [hasAnswered]);
+  // console.log("UsersAnswer:", userAnswer);
 
   const resetAnswer = () => {
     setHasAnswered(false);
@@ -103,6 +104,7 @@ const Questions3 = () => {
 
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
+      //TODO REMAP TO 3RD ROUND
       history.push("/results/3");
     }
     return;
@@ -110,6 +112,9 @@ const Questions3 = () => {
 
   //When the Modal opens
   const toggleModal = () => {
+    console.log(questions13);
+    // console.log(event.target);
+    // event.target.disabled = true;
     setAnsweredQuestions(answeredQuetions + 1);
     countDown();
     setQuestionText(questions13.clues[3].question);
@@ -157,6 +162,8 @@ const Questions3 = () => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
+          // onBackdropClick={onBackdropClick}
+          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <div className="question title">
