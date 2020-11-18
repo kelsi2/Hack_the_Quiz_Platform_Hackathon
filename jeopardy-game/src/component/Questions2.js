@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuestions } from "../store/actions/questionsActions";
-// import {getScore} from "../store/actions/scoreActions";
+import React, {useEffect, useState, useContext} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getQuestions} from "../store/actions/questionsActions";
 import Modal from "./Modal";
-import { AppContext, AnswerContext } from "../App";
-import { Link, useHistory } from "react-router-dom";
+import {AppContext, AnswerContext} from "../App";
+import {useHistory} from "react-router-dom";
 
-const Questions2 = (props) => {
+const Questions2 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -15,7 +14,7 @@ const Questions2 = (props) => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
+  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -108,7 +107,6 @@ const Questions2 = (props) => {
       resetAnswer();
     }
   }, [hasAnswered]);
-  // console.log("UsersAnswer:", userAnswer);
 
   const resetAnswer = () => {
     setHasAnswered(false);
@@ -159,8 +157,8 @@ const Questions2 = (props) => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-            // onBackdropClick={onBackdropClick}
-            // onEscapeKeyDown={onEscapeKeyDown}
+          // onBackdropClick={onBackdropClick}
+          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <td>
@@ -277,8 +275,10 @@ const Questions2 = (props) => {
             ))}
           </td>
         </table>
-        <h2 className="scoreboard title">
-          Your Answer: <span id="answer">What is {userAnswer}?</span>
+        <h2 className="scoreboard">
+          Your Answer: <span>What is </span>
+          <span id="answer">{userAnswer}</span>
+          <span>?</span>
           <div id="correctAnswer" className="hide">
             The correct answer was: {answerText}
           </div>
@@ -288,8 +288,8 @@ const Questions2 = (props) => {
       </div>
     </>
   ) : (
-    <tr>Loading...</tr>
-  );
+      <tr>Loading...</tr>
+    );
 };
 
 export default Questions2;

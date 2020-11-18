@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
-import { Modal, Backdrop, makeStyles, TextField } from "@material-ui/core";
-import { useSpring, animated } from "react-spring/web.cjs";
-import { AnswerContext } from "../App";
+import {Modal, Backdrop, makeStyles, TextField} from "@material-ui/core";
+import {useSpring, animated} from "react-spring/web.cjs";
+import {AnswerContext} from "../App";
 import theme from "../mui";
 import "../modal.css";
 
@@ -30,8 +29,8 @@ const Fade = React.forwardRef(function Fade(props, ref) {
     ...other
   } = props;
   const style = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: open ? 1 : 0 },
+    from: {opacity: 0},
+    to: {opacity: open ? 1 : 0},
     onStart: () => {
       if (open && onEnter) {
         onEnter();
@@ -56,17 +55,10 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 export default function SpringModal(props) {
-  const [answer, setAnswer] = useState("");
-  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
-  // const [time, setTime] = useContext(TimeContext);
-  // const [score, setScore] = useContext(AppContext);
+  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
   const classes = useStyles();
   const handleSubmit = (event) => {
-    // console.log(event.target);
     event.preventDefault();
-    // setUserAnswer(answer);
-    // console.log(userAnswer);
-    // console.log("handleSubmit answer " + userAnswer);
   };
   const handleChange = (event) => {
     const eventValue = event.target.value;

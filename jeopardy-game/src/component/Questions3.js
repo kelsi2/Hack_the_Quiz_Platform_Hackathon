@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuestions } from "../store/actions/questionsActions";
+import React, {useEffect, useState, useContext} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getQuestions} from "../store/actions/questionsActions";
 // import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import WagerModal from "./WagerModal";
-import { AppContext, AnswerContext, WagerContext } from "../App";
-import { Link, useHistory } from "react-router-dom";
+import {AppContext, AnswerContext, WagerContext} from "../App";
+import {Link, useHistory} from "react-router-dom";
 
 const Questions3 = (props) => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const Questions3 = (props) => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
-  const { wager, setWager } = useContext(WagerContext);
+  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
+  const {wager, setWager} = useContext(WagerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -28,7 +28,7 @@ const Questions3 = (props) => {
   const correctAnswer = document.getElementById("correctAnswer");
 
   const usersQuestionData = useSelector((state) => state.questionsList);
-  const { questions13, category12 } = usersQuestionData;
+  const {questions13, category12} = usersQuestionData;
   useEffect(() => {
     dispatch(getQuestions());
   }, [dispatch]);
@@ -162,8 +162,8 @@ const Questions3 = (props) => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-            // onBackdropClick={onBackdropClick}
-            // onEscapeKeyDown={onEscapeKeyDown}
+          // onBackdropClick={onBackdropClick}
+          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <div className="question title">
@@ -190,7 +190,9 @@ const Questions3 = (props) => {
             Your Wager: <span id="wager">{wager}</span>
           </div>
           <div>
-            Your Answer: <span id="answer">What is {userAnswer}?</span>
+            Your Answer: <span>What is </span>
+            <span id="answer">{userAnswer}</span>
+            <span>?</span>
             <div id="correctAnswer" className="hide">
               The correct answer was: {answerText}
             </div>
@@ -201,8 +203,8 @@ const Questions3 = (props) => {
       </div>
     </>
   ) : (
-    <tr>Loading...</tr>
-  );
+      <tr>Loading...</tr>
+    );
 };
 
 export default Questions3;
