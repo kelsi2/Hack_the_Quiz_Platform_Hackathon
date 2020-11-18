@@ -37,10 +37,8 @@ const Questions3 = (props) => {
 
   //global round timer
   useEffect(() => {
-    console.log("In Global Timer UseEffect");
     const interval = setInterval(() => {
       setRoundTime((roundTime) => roundTime - 1);
-      console.log(roundTime);
       checkRoundTime();
     }, 1000);
     return () => clearInterval(interval);
@@ -87,13 +85,10 @@ const Questions3 = (props) => {
 
   const checkAnswer = () => {
     if (answerText === userInput.innerText) {
-      setScore(qpoints + score);
+      setScore(wager + score);
     }
     if (answerText !== userInput.innerText && userInput.innerText !== "") {
-      setScore(score - qpoints);
-    }
-    if (userInput.innerText === "") {
-      return;
+      setScore(score - wager);
     }
   };
 
@@ -119,15 +114,16 @@ const Questions3 = (props) => {
   };
 
   //When the Modal opens
-  const toggleModal = (event) => {
-    console.log(event.target);
-    event.target.disabled = true;
+  const toggleModal = () => {
+    console.log(questions13);
+    // console.log(event.target);
+    // event.target.disabled = true;
     setAnsweredQuestions(answeredQuetions + 1);
     countDown();
-    setQuestionText(event.target.attributes[2].nodeValue);
-    setCategoryText(event.target.attributes[4].nodeValue);
-    setQPoints(parseInt(event.target.attributes[3].nodeValue));
-    setAnswerText(event.target.attributes[5].nodeValue);
+    setQuestionText(questions13.clues[3].question);
+    setCategoryText(category12.title);
+    setQPoints(wager);
+    setAnswerText(questions13.clues[3].answer);
     console.log(answerText);
     setOpen(true);
   };
@@ -135,6 +131,9 @@ const Questions3 = (props) => {
   //seperate close function for wager modal
   const handleWagerClose = () => {
     setWagerModalOpen(false);
+    setTimeout(() => {
+      toggleModal();
+    }, 3000);
     //maybe put some more logic in here to make the question pop up
   };
 
@@ -149,7 +148,7 @@ const Questions3 = (props) => {
   return category12 !== "" ? (
     <>
       <div id="jeopardy-board">
-        <table>
+        <div className="final-jeopardy">
           <WagerModal
             open={wagerModalOpen}
             onClose={handleWagerClose}
@@ -168,30 +167,29 @@ const Questions3 = (props) => {
           // onEscapeKeyDown={onEscapeKeyDown}
           />
 
-          <td>
-            <th className="question">{`${category12.title}`}</th>
+          <div className="question">
+            <h2>{`${category12.title}`}</h2>
             {questions13.clues.slice(3, 4).map((q) => (
-              <tr className="question">
-                <button
-                  type="button"
-                  onClick={toggleModal}
-                  id={q.id}
-                  qtext={q.question}
-                  qPoints={q.value}
-                  qcategory={category12.title}
-                  qanswer={q.answer}
-                >
-                  {q.value}
-                </button>
-              </tr>
+              <button
+                type="button"
+                onClick={toggleModal}
+                id={q.id}
+                qtext={q.question}
+                qPoints={q.value}
+                qcategory={category12.title}
+                qanswer={q.answer}
+                className="final-jeopardy-button"
+              >
+                <div>Final</div>
+                <div>Jeopardy</div>
+              </button>
             ))}
-          </td>
+          </div>
 
-
-        </table>
+        </div>
         <h2 className="scoreboard">
-          Your Wager: <span id="wager">{wager}</span>
-          Your Answer: <span id="answer">{userAnswer}</span>
+          <div>Your Wager: <span id="wager">{wager}</span></div>
+          <div>Your Answer: <span id="answer">{userAnswer}</span></div>
           <br />
         Score: {`${score}`}
         </h2>

@@ -149,7 +149,7 @@ const Questions = (props) => {
 
   return category !== "" ? (
     <>
-      <div id="jeopardy-board">
+      <div id="jeopardy-board-1">
         <table>
           <Modal
             open={open}
