@@ -1,13 +1,12 @@
 import React, {useEffect, useState, useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getQuestions} from "../store/actions/questionsActions";
-// import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import WagerModal from "./WagerModal";
 import {AppContext, AnswerContext, WagerContext} from "../App";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-const Questions3 = (props) => {
+const Questions3 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -45,7 +44,6 @@ const Questions3 = (props) => {
   //checkRoundTimer
   const checkRoundTime = () => {
     if (roundTime < 1) {
-      //TODO REMAP TO 3RD ROUND
       history.push("/results/3");
     }
   };
@@ -95,16 +93,13 @@ const Questions3 = (props) => {
       resetAnswer();
     }
   }, [hasAnswered]);
-  // console.log("UsersAnswer:", userAnswer);
 
   const resetAnswer = () => {
     setHasAnswered(false);
-    //we need a way to reset our answer once checked
   };
 
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
-      //TODO REMAP TO 3RD ROUND
       history.push("/results/3");
     }
     return;
@@ -112,16 +107,13 @@ const Questions3 = (props) => {
 
   //When the Modal opens
   const toggleModal = () => {
-    console.log(questions13);
-    // console.log(event.target);
-    // event.target.disabled = true;
+    setUserAnswer("");
     setAnsweredQuestions(answeredQuetions + 1);
     countDown();
     setQuestionText(questions13.clues[3].question);
     setCategoryText(category12.title);
     setQPoints(wager);
     setAnswerText(questions13.clues[3].answer.replace(/<[^>]+>/g, ""));
-    console.log(answerText);
     setOpen(true);
   };
 
@@ -131,12 +123,10 @@ const Questions3 = (props) => {
     setTimeout(() => {
       toggleModal();
     }, 3000);
-    //maybe put some more logic in here to make the question pop up
   };
 
   //When the modal closes
   const handleClose = (event) => {
-    console.log(correctAnswer);
     event.target.disabled = true;
     setHasAnswered(!hasAnswered);
     resetTimer();
@@ -162,8 +152,6 @@ const Questions3 = (props) => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-          // onBackdropClick={onBackdropClick}
-          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <div className="question title">

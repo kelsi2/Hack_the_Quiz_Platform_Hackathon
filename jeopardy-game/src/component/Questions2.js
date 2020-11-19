@@ -1,12 +1,11 @@
 import React, {useEffect, useState, useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getQuestions} from "../store/actions/questionsActions";
-// import {getScore} from "../store/actions/scoreActions";
 import Modal from "./Modal";
 import {AppContext, AnswerContext} from "../App";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-const Questions2 = (props) => {
+const Questions2 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [open, setOpen] = useState(false);
@@ -55,7 +54,6 @@ const Questions2 = (props) => {
   //checkRoundTimer
   const checkRoundTime = () => {
     if (roundTime < 1) {
-      //TODO REMAP TO 3RD ROUND
       history.push("/results/2");
     }
   };
@@ -91,8 +89,6 @@ const Questions2 = (props) => {
   };
 
   const checkAnswer = () => {
-    console.log(answerText);
-    console.log(userInput.innerText);
     if (answerText === userInput.innerText) {
       setScore(qpoints + score);
     }
@@ -110,16 +106,13 @@ const Questions2 = (props) => {
       resetAnswer();
     }
   }, [hasAnswered]);
-  // console.log("UsersAnswer:", userAnswer);
 
   const resetAnswer = () => {
     setHasAnswered(false);
-    //we need a way to reset our answer once checked
   };
 
   const checkNumberAnsweredQuestions = () => {
     if (answeredQuetions === 30) {
-      //TODO REMAP TO 3RD ROUND
       history.push("/results/2");
     }
     return;
@@ -129,13 +122,13 @@ const Questions2 = (props) => {
   const toggleModal = (event) => {
     correctAnswer.classList.add("hide");
     event.target.disabled = true;
+    setUserAnswer("");
     setAnsweredQuestions(answeredQuetions + 1);
     countDown();
     setQuestionText(event.target.attributes[2].nodeValue);
     setCategoryText(event.target.attributes[4].nodeValue);
     setQPoints(parseInt(event.target.attributes[3].nodeValue));
     setAnswerText(event.target.attributes[5].nodeValue.replace(/<[^>]+>/g, ""));
-    console.log(answerText);
     setOpen(true);
   };
 
@@ -161,8 +154,6 @@ const Questions2 = (props) => {
             qpoints={qpoints}
             userAnswer={userAnswer}
             timer={seconds}
-          // onBackdropClick={onBackdropClick}
-          // onEscapeKeyDown={onEscapeKeyDown}
           />
 
           <td>

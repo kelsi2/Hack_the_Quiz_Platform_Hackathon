@@ -58,7 +58,6 @@ export default function SpringModal(props) {
   const classes = useStyles();
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUserAnswer("");
   };
   const handleChange = (event) => {
     const eventValue = event.target.value;
