@@ -10,7 +10,7 @@ const Results1 = () => {
       <div className="text-block">
         <h1>Round 1 Results</h1>
 
-        <h3 className="score-display">Your current score is: {score}</h3>
+        <h3 className="score-display">Your current score is: ${score}</h3>
 
         <Link to="/questions/2" className="submit-button results-button">Begin round 2</Link>
       </div>

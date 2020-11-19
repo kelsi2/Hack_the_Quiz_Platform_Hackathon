@@ -173,9 +173,9 @@ const Questions3 = () => {
             ))}
           </div>
         </div>
-        <div className="scoreboard">
+        <h2 className="scoreboard">
           <div>
-            Your Wager: <span id="wager">{wager}</span>
+            Your Wager: $<span id="wager">{wager}</span>
           </div>
           <div className="answerContainer">
             <p>Your Answer:</p>
@@ -189,8 +189,8 @@ const Questions3 = () => {
             The correct answer was: {answerText}
           </div>
           <br />
-          Score: {`${score}`}
-        </div>
+          Score: ${`${score}`}
+        </h2>
       </div>
     </>
   ) : (

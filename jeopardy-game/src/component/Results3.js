@@ -18,7 +18,7 @@ const Results3 = () => {
       <div className="text-block">
         <h1>Final Results</h1>
 
-        <h3 className="score-display">Your final score is: {score}</h3>
+        <h3 className="score-display">Your final score is: ${score}</h3>
 
         <Link onClick={resetGameState} to="/questions/1" className="submit-button results-button">Play again?</Link>
       </div>

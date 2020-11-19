@@ -284,7 +284,7 @@ const Questions = () => {
             The correct answer was: {answerText}
           </div>
           <br />
-          Score: {`${score}`}
+          Score: ${`${score}`}
         </h2>
       </div>
     </>

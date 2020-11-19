@@ -38,7 +38,20 @@ The only restrictions are the following:
 3. The project is scoped for teams of 1 - 3.
 
 ### Screenshots
-
+!["Let's Play Jeopardy"](docs/letsplayjeopardy.png)
+!["Answering Questions"](docs/answerq1.gif)
+!["Answering Question Wrong"](docs/answerQWrong.gif)
+!["Answering Questions"](docs/featurequestion.gif)
+!["Final Jeopardy"](docs/finaljeopardy.gif)
+!["Answering Questions Round 2"](docs/round2.gif)
+!["Transition Screen"](docs/Transitiontoround2.gif)
+!["Getting Money"](docs/dollardollar.png)
+!["Getting More Money"](docs/moredollardollar.png)
+!["Round 2 Results Screen"](docs/round2results.png)
+!["Enter a Wager"](docs/wager.png)
+!["Final Jeopardy Results"](docs/results3.png)
+!["Final Jeopardy Round"](docs/finaljeopardy.png)
+!["Revealing the answer Final Jeopardy"](docs/patrickMcGoohan.png)
 
 ### Tech Stack
 * React (Create React App)
