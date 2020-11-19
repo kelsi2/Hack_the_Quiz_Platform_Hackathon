@@ -1,0 +1,24 @@
+.container {
+  background-image: url("https://static2.cbrimages.com/wordpress/wp-content/uploads/2020/04/jeopardy-logo.jpg?q=50&fit=crop&w=960&h=500");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-text {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 80px;
+  margin: 0;
+}
+
+#play-button {
+  margin-bottom: 1rem;
+  width: fit-content;
+  align-self: center;
+}

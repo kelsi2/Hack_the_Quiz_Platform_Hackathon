@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import "./modal.css";
+import "./styles/index.css";
+import "./styles/modal.css";
+import "./styles/home.css";
+import "./styles/jeopardy.css";
+import "./styles/results.css";
 import App from "./App";
 import store from "./store/store";
 import {Provider} from "react-redux";

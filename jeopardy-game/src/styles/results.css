@@ -1,0 +1,23 @@
+.results-container {
+  background-image: url("https://static2.cbrimages.com/wordpress/wp-content/uploads/2020/04/jeopardy-logo.jpg?q=50&fit=crop&w=960&h=500");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Results screen text */
+.text-block {
+  position: absolute;
+  background-color: #e3f2fd;
+  padding: 50px;
+  border: 2px solid #000;
+  text-align: center;
+}
+
+.results-button {
+  z-index: -1;
+}

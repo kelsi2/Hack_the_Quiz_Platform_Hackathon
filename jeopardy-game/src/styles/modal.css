@@ -18,3 +18,11 @@ form {
   margin: 0.5rem;
   text-decoration: none;
 }
+
+.hide {
+  display: none;
+}
+
+.title {
+  text-transform: capitalize;
+}

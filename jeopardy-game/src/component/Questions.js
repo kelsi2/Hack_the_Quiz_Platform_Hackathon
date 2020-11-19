@@ -280,9 +280,11 @@ const Questions = (props) => {
           </td>
         </table>
         <h2 className="scoreboard">
-          Your Answer: <span>What is </span>
-          <span id="answer">{userAnswer}</span>
-          <span>?</span>
+          <div className="answerContainer">
+            Your Answer: <div className="margin">What is </div>
+            <span id="answer">{userAnswer}</span>
+            <div>?</div>
+          </div>
           <div id="correctAnswer" className="hide">
             The correct answer was: {answerText}
           </div>

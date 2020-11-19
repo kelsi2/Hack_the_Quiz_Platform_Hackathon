@@ -1,7 +1,6 @@
 import React, {useContext} from "react";
 import {AppContext} from "../App";
 import {Link} from "react-router-dom";
-import "../modal.css";
 
 const Results1 = () => {
   const [score, setScore] = useContext(AppContext);

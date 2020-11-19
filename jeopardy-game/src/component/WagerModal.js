@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Modal, Backdrop, makeStyles, TextField} from "@material-ui/core";
 import {useSpring, animated} from "react-spring/web.cjs";
 import {WagerContext} from "../App";
-import theme from "../mui";
+import theme from "../styles/mui";
 
 const useStyles = makeStyles(() => ({
   modal: {
