@@ -6,8 +6,10 @@ const Home = () => {
     <>
       <div className="container">
         <h1 className="home-text">Let's play...</h1>
-
-        <Link to="/questions/1" className="submit-button" id="play-button">New Game</Link>
+        <span className="home-buttons">
+          <Link to="/questions/1" className="submit-button">New Game</Link>
+          <Link to="/instructions" className="submit-button">How to Play</Link>
+        </span>
       </div>
     </>
   );

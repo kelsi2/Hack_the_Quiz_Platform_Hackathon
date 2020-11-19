@@ -6,6 +6,7 @@ import Results1 from "./component/Results1";
 import Results2 from "./component/Results2";
 import Results3 from "./component/Results3";
 import Home from "./component/Home";
+import Instructions from "./component/Instructions";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 export const AppContext = createContext([{}, () => { }]);
@@ -23,6 +24,7 @@ function App() {
           <WagerContext.Provider value={{wager, setWager}}>
             <Switch className="App">
               <Route exact path="/" component={Home} />
+              <Route path="/instructions" component={Instructions} />
               <Route path="/questions/1" component={Questions} />
               <Route path="/questions/2" component={Questions2} />
               <Route path="/questions/3" component={Questions3} />

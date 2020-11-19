@@ -17,8 +17,8 @@
   margin: 0;
 }
 
-#play-button {
-  margin-bottom: 1rem;
-  width: fit-content;
+.home-buttons {
+  margin-bottom: 3rem;
   align-self: center;
+  width: fit-content;
 }
