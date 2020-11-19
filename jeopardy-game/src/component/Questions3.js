@@ -189,7 +189,7 @@ const Questions3 = (props) => {
           <div>
             Your Wager: <span id="wager">{wager}</span>
           </div>
-          <div>
+          <div className="answerContainer">
             Your Answer: <div className="margin">What is </div>
             <span id="answer">{userAnswer}</span>
             <div>?</div>
