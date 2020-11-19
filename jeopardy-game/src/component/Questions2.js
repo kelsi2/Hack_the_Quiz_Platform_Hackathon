@@ -1,9 +1,9 @@
-import React, {useEffect, useState, useContext} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "../store/actions/questionsActions";
+import React, { useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuestions } from "../store/actions/questionsActions";
 import Modal from "./Modal";
-import {AppContext, AnswerContext} from "../App";
-import {useHistory} from "react-router-dom";
+import { AppContext, AnswerContext } from "../App";
+import { useHistory } from "react-router-dom";
 
 const Questions2 = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const Questions2 = () => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
+  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -134,7 +134,9 @@ const Questions2 = () => {
 
   //When the modal closes
   const handleClose = (event) => {
-    event.target.disabled = true;
+    if (event) {
+      event.target.disabled = true;
+    }
     setHasAnswered(!hasAnswered);
     resetTimer();
     checkNumberAnsweredQuestions();
@@ -273,9 +275,15 @@ const Questions2 = () => {
         <h2 className="scoreboard">
           <div className="answerContainer">
             <p>Your Answer:</p>
-            <div className="margin"><p>What is</p> </div>
-            <div id="answer"><p>{userAnswer}</p></div>
-            <div><p>?</p></div>
+            <div className="margin">
+              <p>What is</p>{" "}
+            </div>
+            <div id="answer">
+              <p>{userAnswer}</p>
+            </div>
+            <div>
+              <p>?</p>
+            </div>
           </div>
           <div id="correctAnswer" className="hide">
             The correct answer was: {answerText}
@@ -286,8 +294,8 @@ const Questions2 = () => {
       </div>
     </>
   ) : (
-      <tr>Loading...</tr>
-    );
+    <tr>Loading...</tr>
+  );
 };
 
 export default Questions2;

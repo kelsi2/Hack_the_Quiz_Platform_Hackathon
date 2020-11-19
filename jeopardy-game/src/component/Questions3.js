@@ -1,10 +1,10 @@
-import React, {useEffect, useState, useContext} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getQuestions} from "../store/actions/questionsActions";
+import React, { useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuestions } from "../store/actions/questionsActions";
 import Modal from "./Modal";
 import WagerModal from "./WagerModal";
-import {AppContext, AnswerContext, WagerContext} from "../App";
-import {useHistory} from "react-router-dom";
+import { AppContext, AnswerContext, WagerContext } from "../App";
+import { useHistory } from "react-router-dom";
 
 const Questions3 = () => {
   const dispatch = useDispatch();
@@ -16,8 +16,8 @@ const Questions3 = () => {
   const [answerText, setAnswerText] = useState("");
   const [qpoints, setQPoints] = useState(0);
   const [score, setScore] = useContext(AppContext);
-  const {userAnswer, setUserAnswer} = useContext(AnswerContext);
-  const {wager, setWager} = useContext(WagerContext);
+  const { userAnswer, setUserAnswer } = useContext(AnswerContext);
+  const { wager, setWager } = useContext(WagerContext);
   const [seconds, setSeconds] = useState(30);
   const [isActive, setIsActive] = useState(false);
   const [hasAnswered, setHasAnswered] = useState(false);
@@ -27,7 +27,7 @@ const Questions3 = () => {
   const correctAnswer = document.getElementById("correctAnswer");
 
   const usersQuestionData = useSelector((state) => state.questionsList);
-  const {questions13, category12} = usersQuestionData;
+  const { questions13, category12 } = usersQuestionData;
   useEffect(() => {
     dispatch(getQuestions());
   }, [dispatch]);
@@ -127,7 +127,9 @@ const Questions3 = () => {
 
   //When the modal closes
   const handleClose = (event) => {
-    event.target.disabled = true;
+    if (event) {
+      event.target.disabled = true;
+    }
     setHasAnswered(!hasAnswered);
     resetTimer();
     checkNumberAnsweredQuestions();
@@ -179,8 +181,12 @@ const Questions3 = () => {
           </div>
           <div className="answerContainer">
             <p>Your Answer:</p>
-            <div className="margin"><p>What is</p></div>
-            <div id="answer"><p>{userAnswer}</p></div>
+            <div className="margin">
+              <p>What is</p>
+            </div>
+            <div id="answer">
+              <p>{userAnswer}</p>
+            </div>
             <div>
               <p>?</p>
             </div>
@@ -194,8 +200,8 @@ const Questions3 = () => {
       </div>
     </>
   ) : (
-      <tr>Loading...</tr>
-    );
+    <tr>Loading...</tr>
+  );
 };
 
 export default Questions3;
