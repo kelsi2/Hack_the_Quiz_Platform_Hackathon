@@ -1,6 +1,6 @@
 # Jeopardy
 
-Jeopardy game built for [Mintbean JavaScript Hacks: Hack the QUiz Platform](https://www.mintbean.io/meets). This was a one week hackathon running from November 13 - 19, 2020.
+Jeopardy game built for [Mintbean JavaScript Hacks: Hack the Quiz Platform](https://www.mintbean.io/meets). This was a one week hackathon running from November 13 - 19, 2020.
 
 ## Table of Contents
 
