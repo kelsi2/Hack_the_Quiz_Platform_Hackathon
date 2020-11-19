@@ -63,3 +63,8 @@ button:disabled {
 .margin {
   margin: 0 5px;
 }
+
+#answer {
+  
+  align-content: center;
+}

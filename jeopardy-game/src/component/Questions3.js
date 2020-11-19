@@ -185,21 +185,24 @@ const Questions3 = (props) => {
             ))}
           </div>
         </div>
-        <h2 className="scoreboard">
+        <div className="scoreboard">
           <div>
             Your Wager: <span id="wager">{wager}</span>
           </div>
           <div className="answerContainer">
-            Your Answer: <div className="margin">What is </div>
-            <span id="answer">{userAnswer}</span>
-            <div>?</div>
+            <p>Your Answer:</p>
+            <div className="margin"><p>What is</p></div>
+            <div id="answer"><p>{userAnswer}</p></div>
+            <div>
+              <p>?</p>
+            </div>
           </div>
           <div id="correctAnswer" className="hide">
             The correct answer was: {answerText}
           </div>
           <br />
           Score: {`${score}`}
-        </h2>
+        </div>
       </div>
     </>
   ) : (
